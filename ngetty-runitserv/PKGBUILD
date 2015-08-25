@@ -1,0 +1,28 @@
+# Maintainer: Eric Vidal <eric@obarun.org>
+
+pkgname=ngetty-runitserv
+pkgver=0.1
+pkgrel=1
+pkgdesc="ngetty service for runit"
+arch=(x86_64)
+license=('beerware')
+depends=('ngetty' 'runit')
+conflicts=()
+install=ngetty.install
+source=('TERM'
+		'ngetty.run.runit'
+		'LICENSE'
+		'ngetty.install')
+md5sums=('5bb062356cddb5d2c0ef41eb2660cb06'
+         'b5583b56a5beb5bae5255047b23e3ecc'
+         '191a37ae657aa17e37e75d0242865dba'
+         'c0bc7b5f0a9363b7305e3450c3a77247')
+
+
+package() {
+	
+	DESTDIR="$pkgdir/" 
+	install -Dm755 "$srcdir/ngetty.run.runit" "$pkgdir/etc/sv/ngetty/run"
+	install -Dm644 "$srcdir/TERM" "$pkgdir/etc/sv/ngetty/env/TERM"
+	install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/ngetty-runitserv/LICENSE"
+}
