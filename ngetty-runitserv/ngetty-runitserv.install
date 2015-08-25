@@ -1,0 +1,6 @@
+pre_install() {
+	if [ -d /etc/sv/ngetty ]; then
+		rm -r /etc/sv/ngetty
+	fi
+}
+

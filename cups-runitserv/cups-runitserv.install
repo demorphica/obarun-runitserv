@@ -1,0 +1,9 @@
+pre_install() {
+	if [ -d /etc/sv/cups ]; then
+		rm -r /etc/sv/cups
+	fi
+	if [ -d /var/log/cups ]; then
+		rm -r /var/log/cups
+	fi
+}
+

@@ -1,0 +1,10 @@
+pre_install() {
+	
+	if [ -d /etc/sv/connmand ]; then
+		rm -r /etc/sv/connmand
+	fi
+	if [ -d /var/log/connmand ]; then
+		rm -r /var/log/connmand
+	fi
+}
+

@@ -2,23 +2,23 @@
 
 pkgname=connmand-runitserv
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="connmand service for runit"
 arch=(x86_64)
 license=('beerware')
 depends=('connman' 'runit')
 conflicts=()
-install=connmand.install
+install=connmand-runitserv.install
 source=('connmand.config.log.runit'
 		'connmand.log.run.runit'
 		'connmand.run.runit'
 		'LICENSE'
-		'connmand.install')
+		'connmand-runitserv.install')
 md5sums=('c766a00d6cf212ec715e0c9608794d65'
          'a6fe5beca83e771bcc1edd8beaa14120'
          '0d6b72536bad97221b3a047943ddd050'
          '191a37ae657aa17e37e75d0242865dba'
-         '62f46e9dadd25749eccdf7545cb01f7b')
+         '186f9005272e85b0032891cd7bedb197')
 
 
 package() {

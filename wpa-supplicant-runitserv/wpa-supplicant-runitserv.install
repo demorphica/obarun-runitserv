@@ -1,0 +1,9 @@
+pre_install() {
+	if [ -d /etc/sv/wpa-supplicant ]; then
+		rm -r /etc/sv/wpa-supplicant
+	fi
+	if [ -d /var/log/wpa-supplicant ]; then
+		rm -r /var/log/wpa-supplicant
+	fi
+}
+

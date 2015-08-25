@@ -2,25 +2,25 @@
 
 pkgname=dbus-runitserv
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="dbus service for runit"
 arch=(x86_64)
 license=('beerware')
 depends=('dbus-nosystemd' 'runit')
 conflicts=()
-install=dbus.install
+install=dbus-runitserv.install
 source=('dbus.config.log.runit'
 		'dbus.finish.runit'
 		'dbus.log.run.runit'
 		'dbus.run.runit'
 		'LICENSE'
-		'dbus.install')
+		'dbus-runitserv.install')
 md5sums=('84d6b4c2bffa87d2e16e08f2dec63834'
          'b31b01a265e4b50b72da2677048fd1c1'
          'c63c966dbf18f05a15eb6d3446be0534'
          'ef7d6dd5c2b073aac373a883d4a6995c'
          '191a37ae657aa17e37e75d0242865dba'
-         '11a6f6728d9c0b69c3f6e4a69e2112e2')
+         '934073df12ea34b094834e92938de253')
 
 
 package() {
