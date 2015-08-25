@@ -1,0 +1,6 @@
+#!/bin/sh
+if [ ! -d /var/log/wpa-supplicant ]; then
+    mkdir -p /var/log/wpa-supplicant
+fi
+exec chpst -uroot svlogd -tt /var/log/wpa-supplicant
+
