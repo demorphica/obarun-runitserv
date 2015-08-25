@@ -1,0 +1,5 @@
+#!/bin/sh
+if [ ! -d /var/log/connman-vpnd ]; then
+    mkdir -p /var/log/connman-vpnd
+fi
+exec chpst -uroot svlogd -tt /var/log/connman-vpnd

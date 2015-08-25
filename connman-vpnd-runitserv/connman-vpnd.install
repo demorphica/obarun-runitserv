@@ -1,0 +1,12 @@
+pre_install(){
+	if [ -L /var/service/connman-vpnd ]; then
+		rm /var/service/connman-vpnd
+	fi
+	if [ -d /etc/sv/connman-vpnd ]; then
+		rm -r /etc/sv/connman-vpnd
+	fi
+	if [ -d /var/log/connman-vpnd ]; then
+		rm -r /var/log/connman-vpnd
+	fi
+}
+
