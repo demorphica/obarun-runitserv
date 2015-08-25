@@ -1,0 +1,34 @@
+# Maintainer: Eric Vidal <eric@obarun.org>
+
+pkgname=dbus-runitserv
+pkgver=0.1
+pkgrel=1
+pkgdesc="dbus service for runit"
+arch=(x86_64)
+license=('beerware')
+depends=('dbus-nosystemd' 'runit')
+conflicts=()
+install=dbus.install
+source=('dbus.config.log.runit'
+		'dbus.finish.runit'
+		'dbus.log.run.runit'
+		'dbus.run.runit'
+		'LICENSE'
+		'dbus.install')
+md5sums=('84d6b4c2bffa87d2e16e08f2dec63834'
+         'b31b01a265e4b50b72da2677048fd1c1'
+         'c63c966dbf18f05a15eb6d3446be0534'
+         'ef7d6dd5c2b073aac373a883d4a6995c'
+         '191a37ae657aa17e37e75d0242865dba'
+         '5325769b5c7f3969c23d0d2620193fc0')
+
+
+package() {
+	
+	DESTDIR="$pkgdir/" 
+	install -Dm755 "$srcdir/dbus.run.runit" "$pkgdir/etc/sv/dbus/run"
+  install -Dm755 "$srcdir/dbus.finish.runit" "$pkgdir/etc/sv/dbus/finish"
+  install -Dm755 "$srcdir/dbus.log.run.runit" "$pkgdir/etc/sv/dbus/log/run"
+  install -Dm644 "$srcdir/dbus.config.log.runit" "$pkgdir/var/log/dbus/config"
+  install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/dbus-runitserv/LICENSE"
+}
