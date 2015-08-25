@@ -1,0 +1,6 @@
+#!/bin/sh
+if [ ! -d /var/log/cups ]; then
+	mkdir -p /var/log/cups
+fi
+
+exec chpst -uroot svlogd -tt /var/log/cups

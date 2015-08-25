@@ -1,0 +1,31 @@
+# Maintainer: Eric Vidal <eric@obarun.org>
+
+pkgname=cups-runitserv
+pkgver=0.1
+pkgrel=1
+pkgdesc="cups service for runit"
+arch=(x86_64)
+license=('beerware')
+depends=('cups-nosystemd' 'runit')
+conflicts=()
+install=cups.install
+source=('cups.config.log.runit'
+		'cups.log.run.runit'
+		'cups.run.runit'
+		'LICENSE'
+		'cups.install')
+md5sums=('f11945e035643cb4a1f2e380fedb5823'
+         '830c5cb63fc9d66f102bdb1430dd687f'
+         '2578450f5056084cd6c6dcda1e3443ad'
+         '191a37ae657aa17e37e75d0242865dba'
+         '3dc2d386cd2a12c9b85ac403df018bb6')
+
+
+package() {
+	
+	DESTDIR="$pkgdir/" 
+	install -Dm755 "$srcdir/cups.run.runit" "$pkgdir/etc/sv/cups/run"
+  install -Dm755 "$srcdir/cups.log.run.runit" "$pkgdir/etc/sv/cups/log/run"
+  install -Dm644 "$srcdir/cups.config.log.runit" "$pkgdir/var/log/cups/config"
+  install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/cups-runitserv/LICENSE"
+}
