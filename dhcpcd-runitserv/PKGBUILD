@@ -15,7 +15,7 @@ source=('dhcpcd.config.log.runit'
 		'dhcpcd.run.runit'
 		'dhcpcd.install'
 		'LICENSE')
-md5sums=('d41d8cd98f00b204e9800998ecf8427e'
+md5sums=('6d4321bf8c6c2a5ce2fc53b06dd62c8c'
          '10602eac63c15c45007f82b288da0427'
          'b0cbcb60484a60258b2a0e74c9914e88'
          '45c7a2b35b0f9afd031f29de45ff8d19'
