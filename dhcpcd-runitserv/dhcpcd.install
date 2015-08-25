@@ -1,0 +1,15 @@
+pre_install(){
+	if [ -L /var/service/dhcpcd ]; then
+		rm /var/service/dhcpcd
+	fi
+	if [ -d /etc/sv/dhcpcd ]; then
+		rm -r /etc/sv/dhcpcd
+	fi
+	if [ -d /var/log/dhcpcd ]; then
+		rm -r /var/log/dhcpcd
+	fi
+}
+post_install(){
+	echo "======> Check your ethernet card name with the command : ip link show"
+	echo "======> Edit /etc/sv/dhcpcd/run and replace enp2s0 by your card name"
+}

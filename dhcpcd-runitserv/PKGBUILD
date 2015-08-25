@@ -1,0 +1,34 @@
+# Maintainer: Eric Vidal <eric@obarun.org>
+
+pkgname=dhcpcd-runitserv
+pkgver=0.1
+pkgrel=1
+pkgdesc="dhcpcd service for runit"
+arch=(x86_64)
+license=('beerware')
+depends=('dhcpcd-nosystemd' 'runit')
+conflicts=()
+install=dhcpcd.install
+source=('dhcpcd.config.log.runit'
+		'dhcpcd.finish.runit'
+		'dhcpcd.log.run.runit'
+		'dhcpcd.run.runit'
+		'dhcpcd.install'
+		'LICENSE')
+md5sums=('d41d8cd98f00b204e9800998ecf8427e'
+         '10602eac63c15c45007f82b288da0427'
+         'b0cbcb60484a60258b2a0e74c9914e88'
+         '45c7a2b35b0f9afd031f29de45ff8d19'
+         'fc0f821d4c37f74cff470132629a9a8a'
+         '191a37ae657aa17e37e75d0242865dba')
+
+
+package() {
+	
+	DESTDIR="$pkgdir/" 
+	install -Dm755 "${srcdir}/dhcpcd.finish.runit" "${pkgdir}/etc/sv/dhcpcd/finish"
+  install -Dm755 "${srcdir}/dhcpcd.run.runit" "${pkgdir}/etc/sv/dhcpcd/run"
+  install -Dm755 "${srcdir}/dhcpcd.log.run.runit" "${pkgdir}/etc/sv/dhcpcd/log/run"
+  install -Dm755 "${srcdir}/dhcpcd.config.log.runit" "${pkgdir}/var/log/dhcpcd/config"
+  install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/dhcpcd-runitserv/LICENSE"
+}

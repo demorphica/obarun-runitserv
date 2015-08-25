@@ -1,0 +1,5 @@
+#!/bin/sh
+if [ ! -d /var/log/dhcpcd ]; then
+	mkdir -p /var/log/dhcpcd
+fi
+exec chpst -uroot svlogd -tt /var/log/dhcpcd
