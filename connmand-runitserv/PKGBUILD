@@ -1,0 +1,31 @@
+# Maintainer: Eric Vidal <eric@obarun.org>
+
+pkgname=connmand-runitserv
+pkgver=0.1
+pkgrel=1
+pkgdesc="connmand service for runit"
+arch=(x86_64)
+license=('beerware')
+depends=('connman' 'runit')
+conflicts=()
+install=connmand.install
+source=('connmand.config.log.runit'
+		'connmand.log.run.runit'
+		'connmand.run.runit'
+		'LICENSE'
+		'connmand.install')
+md5sums=('c766a00d6cf212ec715e0c9608794d65'
+         'a6fe5beca83e771bcc1edd8beaa14120'
+         '0d6b72536bad97221b3a047943ddd050'
+         '191a37ae657aa17e37e75d0242865dba'
+         '62f46e9dadd25749eccdf7545cb01f7b')
+
+
+package() {
+	
+	DESTDIR="$pkgdir/" 
+	install -Dm755 "$srcdir/connmand.run.runit" "$pkgdir/etc/sv/connmand/run"
+    install -Dm755 "$srcdir/connmand.log.run.runit" "$pkgdir/etc/sv/connmand/log/run"
+	install -Dm644 "$srcdir/connmand.config.log.runit" "$pkgdir/var/log/connmand/config"
+	install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/connmand-runitserv/LICENSE"
+}
