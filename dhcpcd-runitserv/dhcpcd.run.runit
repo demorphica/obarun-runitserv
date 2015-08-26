@@ -1,5 +1,5 @@
-#!/bin/sh
+#!/usr/bin/sh
 
 [ -r /etc/dhcpcd.conf ] && . /etc/dhcpcd.conf
-
-exec /usr/bin/dhcpcd -B enp2s0 $OPTS 1>&2
+exec 2>&1
+exec /usr/bin/dhcpcd -B enp2s0 $OPTS 

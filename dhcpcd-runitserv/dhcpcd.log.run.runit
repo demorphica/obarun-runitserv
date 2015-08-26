@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/sh
 if [ ! -d /var/log/dhcpcd ]; then
 	mkdir -p /var/log/dhcpcd
 fi

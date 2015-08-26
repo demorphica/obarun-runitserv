@@ -10,3 +10,11 @@ post_install() {
 	echo "======> Check your ethernet card name with the command : ip link show"
 	echo "======> Edit /etc/sv/dhcpcd/run and replace enp2s0 by your card name"
 }
+pre_remove() {
+	if [ -L /var/service/dhcpcd ]; then
+		rm /var/service/dhcpcd
+		(sleep 3)
+	fi
+	rm -r /var/log/dhcpcd
+	rm -r /etc/sv/dhcpcd
+}

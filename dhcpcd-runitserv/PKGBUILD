@@ -2,7 +2,7 @@
 
 pkgname=dhcpcd-runitserv
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="dhcpcd service for runit"
 arch=(x86_64)
 license=('beerware')
@@ -15,20 +15,19 @@ source=('dhcpcd.config.log.runit'
 		'dhcpcd.run.runit'
 		'dhcpcd-runitserv.install'
 		'LICENSE')
-md5sums=('6d4321bf8c6c2a5ce2fc53b06dd62c8c'
-         '10602eac63c15c45007f82b288da0427'
-         'b0cbcb60484a60258b2a0e74c9914e88'
-         '45c7a2b35b0f9afd031f29de45ff8d19'
-         '2509355ec4e5e34cf2660187110b7279'
+md5sums=('a43bef5572fd4bf6416411ce51a2d110'
+         'cb945ed7995be8411db8efd3d3696952'
+         '69f2975cc63fac95098865a40146292a'
+         '4bfdc09d244680a3ee706f507764fb35'
+         'ce535b9ff713516c77be43c0ab60cb1b'
          '191a37ae657aa17e37e75d0242865dba')
-
 
 package() {
 	
-	DESTDIR="$pkgdir/" 
+	
 	install -Dm755 "${srcdir}/dhcpcd.finish.runit" "${pkgdir}/etc/sv/dhcpcd/finish"
-  install -Dm755 "${srcdir}/dhcpcd.run.runit" "${pkgdir}/etc/sv/dhcpcd/run"
-  install -Dm755 "${srcdir}/dhcpcd.log.run.runit" "${pkgdir}/etc/sv/dhcpcd/log/run"
-  install -Dm755 "${srcdir}/dhcpcd.config.log.runit" "${pkgdir}/var/log/dhcpcd/config"
-  install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/dhcpcd-runitserv/LICENSE"
+	install -Dm755 "${srcdir}/dhcpcd.run.runit" "${pkgdir}/etc/sv/dhcpcd/run"
+	install -Dm755 "${srcdir}/dhcpcd.log.run.runit" "${pkgdir}/etc/sv/dhcpcd/log/run"
+	install -Dm755 "${srcdir}/dhcpcd.config.log.runit" "${pkgdir}/var/log/dhcpcd/config"
+	install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/dhcpcd-runitserv/LICENSE"
 }
