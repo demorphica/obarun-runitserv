@@ -1,7 +1,8 @@
-#!/bin/sh
-exec 2>&1
+#!/usr/bin/sh
+
 if [ ! -d /var/run/dbus ]; then
   mkdir -p /var/run/dbus
 fi
+exec 2>&1
 /usr/bin/dbus-uuidgen --ensure
 exec dbus-daemon --nofork --nopidfile --config-file=/etc/dbus-1/system.conf

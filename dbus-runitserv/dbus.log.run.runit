@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/sh
 if [ ! -d /var/log/dbus ]; then
 	mkdir -p /var/log/dbus
 fi

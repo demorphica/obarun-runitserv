@@ -1,2 +1,2 @@
-#!/bin/sh
+#!/usr/bin/sh
 rm -rf /run/dbus/system_bus_socket /run/dbus.pid

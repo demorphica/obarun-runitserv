@@ -2,7 +2,7 @@
 
 pkgname=dbus-runitserv
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="dbus service for runit"
 arch=(x86_64)
 license=('beerware')
@@ -15,20 +15,20 @@ source=('dbus.config.log.runit'
 		'dbus.run.runit'
 		'LICENSE'
 		'dbus-runitserv.install')
-md5sums=('84d6b4c2bffa87d2e16e08f2dec63834'
-         'b31b01a265e4b50b72da2677048fd1c1'
-         'c63c966dbf18f05a15eb6d3446be0534'
-         'ef7d6dd5c2b073aac373a883d4a6995c'
+md5sums=('e11a97d1ec5ca86034a2db9eb23f4005'
+         '3a2c18d11ba36111c412285319983d26'
+         '2303a9c6e5459a27df4c579385b3ea7b'
+         '65f975d9fbfc7703a05115e24c64d0d5'
          '191a37ae657aa17e37e75d0242865dba'
-         '934073df12ea34b094834e92938de253')
+         'a51450c859eea985eed59a2c8a8db291')
 
 
 package() {
 	
-	DESTDIR="$pkgdir/" 
+	
 	install -Dm755 "$srcdir/dbus.run.runit" "$pkgdir/etc/sv/dbus/run"
-  install -Dm755 "$srcdir/dbus.finish.runit" "$pkgdir/etc/sv/dbus/finish"
-  install -Dm755 "$srcdir/dbus.log.run.runit" "$pkgdir/etc/sv/dbus/log/run"
-  install -Dm644 "$srcdir/dbus.config.log.runit" "$pkgdir/var/log/dbus/config"
-  install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/dbus-runitserv/LICENSE"
+	install -Dm755 "$srcdir/dbus.finish.runit" "$pkgdir/etc/sv/dbus/finish"
+	install -Dm755 "$srcdir/dbus.log.run.runit" "$pkgdir/etc/sv/dbus/log/run"
+	install -Dm644 "$srcdir/dbus.config.log.runit" "$pkgdir/var/log/dbus/config"
+	install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/dbus-runitserv/LICENSE"
 }

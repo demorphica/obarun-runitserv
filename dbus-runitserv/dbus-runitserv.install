@@ -7,3 +7,11 @@ pre_install() {
 	fi
 }
 
+pre_remove() {
+	if [ -L /var/service/dbus ]; then
+		rm /var/service/dbus
+		(sleep 3)
+	fi
+	rm -r /var/log/dbus
+	rm -r /etc/sv/dbus
+}
