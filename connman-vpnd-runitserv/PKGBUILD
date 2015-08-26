@@ -2,7 +2,7 @@
 
 pkgname=connman-vpnd-runitserv
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="connman-vpnd service for runit"
 arch=(x86_64)
 license=('beerware')
@@ -14,16 +14,16 @@ source=('connman-vpnd.config.log.runit'
 		'connman-vpnd.run.runit'
 		'LICENSE'
 		'connman-vpnd-runitserv.install')
-md5sums=('b15eb0f794f2c502e9fdaa64c7c79e8f'
-         '525622bfd3fd3b89a5322a30986a8164'
-         '0eae0c0a509dfd5fc9b606f98231ff62'
+md5sums=('a43bef5572fd4bf6416411ce51a2d110'
+         'b083c52ba6d77eded0e1a35a7555ebbe'
+         '2fa55e504a23112558252c597f554957'
          '191a37ae657aa17e37e75d0242865dba'
-         'e0fd786e7fda569acc5ec7921ee587ad')
+         'cc18cc75ffcbfff8dab4dc2cca208f91')
 
 
 package() {
 	
-	DESTDIR="$pkgdir/" 
+	
 	install -Dm755 "$srcdir/connman-vpnd.run.runit" "$pkgdir/etc/sv/connman-vpnd/run"
     install -Dm755 "$srcdir/connman-vpnd.log.run.runit" "$pkgdir/etc/sv/connman-vpnd/log/run"
 	install -Dm644 "$srcdir/connman-vpnd.config.log.runit" "$pkgdir/var/log/connman-vpnd/config"

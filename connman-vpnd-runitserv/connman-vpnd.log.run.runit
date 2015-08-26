@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/sh
 if [ ! -d /var/log/connman-vpnd ]; then
     mkdir -p /var/log/connman-vpnd
 fi

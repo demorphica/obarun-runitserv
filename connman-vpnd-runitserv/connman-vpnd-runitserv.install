@@ -7,4 +7,11 @@ pre_install() {
 		rm -r /var/log/connman-vpnd
 	fi
 }
-
+pre_remove() {
+	if [ -L /var/service/connman-vpnd ]; then
+		rm /var/service/connman-vpnd
+		(sleep 3)
+	fi
+	rm -r /var/log/connman-vpnd
+	rm -r /etc/sv/connman-vpnd
+}
