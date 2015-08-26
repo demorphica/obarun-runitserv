@@ -2,7 +2,7 @@
 
 pkgname=ngetty-runitserv
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="ngetty service for runit"
 arch=(x86_64)
 license=('beerware')
@@ -14,14 +14,14 @@ source=('TERM'
 		'LICENSE'
 		'ngetty-runitserv.install')
 md5sums=('5bb062356cddb5d2c0ef41eb2660cb06'
-         'b5583b56a5beb5bae5255047b23e3ecc'
+         'ca42b7fad012fa19b0aa799d88442291'
          '191a37ae657aa17e37e75d0242865dba'
-         'b7bddbc9ba747172a038f2cbe7bee9d6')
+         '88562ca46ffd0add76a92392b6b22d46')
 
 
 package() {
 	
-	DESTDIR="$pkgdir/" 
+	 
 	install -Dm755 "$srcdir/ngetty.run.runit" "$pkgdir/etc/sv/ngetty/run"
 	install -Dm644 "$srcdir/TERM" "$pkgdir/etc/sv/ngetty/env/TERM"
 	install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/ngetty-runitserv/LICENSE"

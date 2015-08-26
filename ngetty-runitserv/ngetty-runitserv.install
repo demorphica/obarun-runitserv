@@ -3,4 +3,10 @@ pre_install() {
 		rm -r /etc/sv/ngetty
 	fi
 }
-
+pre_remove() {
+	if [ -L /var/service/ngetty ]; then
+		rm /var/service/ngetty
+		(sleep 3)
+	fi
+	rm -r /etc/sv/ngetty
+}

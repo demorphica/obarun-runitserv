@@ -1,9 +1,0 @@
-pre_install(){
-	if [ -L /var/service/ngetty ]; then
-		rm /var/service/ngetty
-	fi
-	if [ -d /etc/sv/ngetty ]; then
-		rm -r /etc/sv/ngetty
-	fi
-}
-
