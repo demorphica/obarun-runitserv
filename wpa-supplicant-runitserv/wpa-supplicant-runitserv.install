@@ -6,4 +6,11 @@ pre_install() {
 		rm -r /var/log/wpa-supplicant
 	fi
 }
-
+pre_remove() {
+	if [ -L /var/service/wpa-supplicant ]; then
+		rm /var/service/wpa-supplicant
+		(sleep 3)
+	fi
+	rm -r /var/log/wpa-supplicant
+	rm -r /etc/sv/wpa-supplicant
+}

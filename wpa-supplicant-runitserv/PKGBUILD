@@ -2,7 +2,7 @@
 
 pkgname=wpa-supplicant-runitserv
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="wpa-supplicant service for runit"
 arch=(x86_64)
 license=('beerware')
@@ -14,16 +14,16 @@ source=('wpa-supplicant.config.log.runit'
 		'wpa-supplicant.run.runit'
 		'LICENSE'
 		'wpa-supplicant-runitserv.install')
-md5sums=('6034185c3598f8221c34a7ff3a6226f9'
-         '3db50792194af86e93bcea16708e8338'
-         '81ce905c049f279598bbba55b3f81396'
+md5sums=('a43bef5572fd4bf6416411ce51a2d110'
+         'a4aea0174848ec14cc9f440b3e055aa8'
+         'ee800dd34b6e8c14ac6e2173f52e4be0'
          '191a37ae657aa17e37e75d0242865dba'
-         '6ff332d88d920baaff0660d83527e67d')
+         '54dab4a55b0a4d34687ade30120ca0e7')
 
 
 package() {
 	
-	DESTDIR="$pkgdir/" 
+	 
 	install -Dm755 "$srcdir/wpa-supplicant.run.runit" "$pkgdir/etc/sv/wpa-supplicant/run"
     install -Dm755 "$srcdir/wpa-supplicant.log.run.runit" "$pkgdir/etc/sv/wpa-supplicant/log/run"
 	install -Dm644 "$srcdir/wpa-supplicant.config.log.runit" "$pkgdir/var/log/wpa-supplicant/config"

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/sh
 if [ ! -d /var/log/wpa-supplicant ]; then
     mkdir -p /var/log/wpa-supplicant
 fi
