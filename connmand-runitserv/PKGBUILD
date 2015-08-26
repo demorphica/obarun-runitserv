@@ -2,7 +2,7 @@
 
 pkgname=connmand-runitserv
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="connmand service for runit"
 arch=(x86_64)
 license=('beerware')
@@ -14,16 +14,16 @@ source=('connmand.config.log.runit'
 		'connmand.run.runit'
 		'LICENSE'
 		'connmand-runitserv.install')
-md5sums=('c766a00d6cf212ec715e0c9608794d65'
-         'a6fe5beca83e771bcc1edd8beaa14120'
-         '0d6b72536bad97221b3a047943ddd050'
+md5sums=('a43bef5572fd4bf6416411ce51a2d110'
+         'd788463d5fcd5708205ae067ae860c1b'
+         '3bcedd339583a895e5d7fc9ee8553739'
          '191a37ae657aa17e37e75d0242865dba'
-         '186f9005272e85b0032891cd7bedb197')
+         '0b2d14af784dd458088891eb7a68a49b')
 
 
 package() {
 	
-	DESTDIR="$pkgdir/" 
+	 
 	install -Dm755 "$srcdir/connmand.run.runit" "$pkgdir/etc/sv/connmand/run"
     install -Dm755 "$srcdir/connmand.log.run.runit" "$pkgdir/etc/sv/connmand/log/run"
 	install -Dm644 "$srcdir/connmand.config.log.runit" "$pkgdir/var/log/connmand/config"

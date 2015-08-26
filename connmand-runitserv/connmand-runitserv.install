@@ -7,4 +7,11 @@ pre_install() {
 		rm -r /var/log/connmand
 	fi
 }
-
+pre_remove() {
+	if [ -L /var/service/connmand ]; then
+		rm /var/service/connmand
+		(sleep 3)
+	fi
+	rm -r /var/log/connmand
+	rm -r /etc/sv/connmand
+}
