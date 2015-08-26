@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/sh
 if [ ! -d /var/log/cups ]; then
 	mkdir -p /var/log/cups
 fi

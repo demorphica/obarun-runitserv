@@ -2,7 +2,7 @@
 
 pkgname=cups-runitserv
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="cups service for runit"
 arch=(x86_64)
 license=('beerware')
@@ -14,18 +14,18 @@ source=('cups.config.log.runit'
 		'cups.run.runit'
 		'LICENSE'
 		'cups-runitserv.install')
-md5sums=('f11945e035643cb4a1f2e380fedb5823'
-         '830c5cb63fc9d66f102bdb1430dd687f'
-         '2578450f5056084cd6c6dcda1e3443ad'
+md5sums=('a43bef5572fd4bf6416411ce51a2d110'
+         'f2e95771558a312bd99f5b8ed7823572'
+         '38f553a01c2ca4d5c7b199abb26baa5c'
          '191a37ae657aa17e37e75d0242865dba'
-         'ab191a600d4ecda6db2c1839eba7d056')
+         '3f860d890a09e38abe4d9d8368c4cc5e')
 
 
 package() {
 	
-	DESTDIR="$pkgdir/" 
+	 
 	install -Dm755 "$srcdir/cups.run.runit" "$pkgdir/etc/sv/cups/run"
-  install -Dm755 "$srcdir/cups.log.run.runit" "$pkgdir/etc/sv/cups/log/run"
-  install -Dm644 "$srcdir/cups.config.log.runit" "$pkgdir/var/log/cups/config"
-  install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/cups-runitserv/LICENSE"
+	install -Dm755 "$srcdir/cups.log.run.runit" "$pkgdir/etc/sv/cups/log/run"
+	install -Dm644 "$srcdir/cups.config.log.runit" "$pkgdir/var/log/cups/config"
+	install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/cups-runitserv/LICENSE"
 }

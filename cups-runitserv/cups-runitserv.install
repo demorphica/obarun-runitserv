@@ -6,4 +6,11 @@ pre_install() {
 		rm -r /var/log/cups
 	fi
 }
-
+pre_remove() {
+	if [ -L /var/service/cups ]; then
+		rm /var/service/cups
+		(sleep 3)
+	fi
+	rm -r /var/log/cups
+	rm -r /etc/sv/cups
+}
