@@ -2,7 +2,7 @@
 
 pkgname=dhcpcd-runitserv
 pkgver=0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="dhcpcd service for runit"
 arch=(x86_64)
 license=('beerware')
@@ -28,6 +28,6 @@ package() {
 	install -Dm755 "${srcdir}/dhcpcd.finish.runit" "${pkgdir}/etc/sv/dhcpcd/finish"
 	install -Dm755 "${srcdir}/dhcpcd.run.runit" "${pkgdir}/etc/sv/dhcpcd/run"
 	install -Dm755 "${srcdir}/dhcpcd.log.run.runit" "${pkgdir}/etc/sv/dhcpcd/log/run"
-	install -Dm755 "${srcdir}/dhcpcd.config.log.runit" "${pkgdir}/var/log/dhcpcd/config"
+	install -Dm644 "${srcdir}/dhcpcd.config.log.runit" "${pkgdir}/var/log/dhcpcd/config"
 	install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/dhcpcd-runitserv/LICENSE"
 }
