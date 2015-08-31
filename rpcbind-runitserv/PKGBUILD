@@ -1,0 +1,31 @@
+# Maintainer: Eric Vidal <eric@obarun.org>
+
+pkgname=rpcbind-runitserv
+pkgver=0.1
+pkgrel=1
+pkgdesc="rpcbind service for runit"
+arch=(x86_64)
+license=('beerware')
+depends=('rpcbind' 'runit')
+conflicts=()
+install=rpcbind-runitserv.install
+source=('rpcbind.config.log.runit'
+		'rpcbind.log.run.runit'
+		'rpcbind.run.runit'
+		'LICENSE'
+		'rpcbind-runitserv.install')
+md5sums=('e11a97d1ec5ca86034a2db9eb23f4005'
+         'c925eda73be4b44e225b2034c580f263'
+         'af2b92f98104152767ccad94dfe432a7'
+         '191a37ae657aa17e37e75d0242865dba'
+         '7d3fa1be296ab6b6b7eed4078b0bf456')
+
+
+package() {
+	
+	 
+	install -Dm755 "$srcdir/rpcbind.run.runit" "$pkgdir/etc/sv/rpcbind/run"
+    install -Dm755 "$srcdir/rpcbind.log.run.runit" "$pkgdir/etc/sv/rpcbind/log/run"
+	install -Dm644 "$srcdir/rpcbind.config.log.runit" "$pkgdir/var/log/rpcbind/config"
+	install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/rpcbind-runitserv/LICENSE"
+}

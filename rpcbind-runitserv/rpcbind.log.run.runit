@@ -1,0 +1,5 @@
+#!/usr/bin/sh
+if [ ! -d /var/log/rpcbind ]; then
+	mkdir -p /var/log/rpcbind
+fi
+exec chpst -uroot svlogd -tt /var/log/rpcbind

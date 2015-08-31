@@ -1,0 +1,17 @@
+pre_install() {
+	if [ -d /etc/sv/rpcbind ]; then
+		rm -r /etc/sv/rpcbind
+	fi
+	if [ -d /var/log/rpcbind ]; then
+		rm -r /var/log/rpcbind
+	fi
+}
+
+pre_remove() {
+	if [ -L /var/service/rpcbind ]; then
+		rm /var/service/rpcbind
+		(sleep 3)
+	fi
+	rm -r /var/log/rpcbind
+	rm -r /etc/sv/rpcbind
+}
