@@ -1,0 +1,41 @@
+#!/usr/bin/sh
+exec 2>&1
+
+source /etc/conf.d/nfs-server.conf
+source /etc/conf.d/nfs-common.conf
+
+NFS_UTILS_CONFIG=/run/sysconfig/nfs-utils
+
+[[ -d /run/sysconfig ]] || mkdir /run/sysconfig
+[[ -e  $NFS_UTILS_CONFIG ]] && rm -f $NFS_UTILS_CONFIG
+
+# /etc/conf.d/nfs-common
+echo "STATDARGS=\"$STATD_OPTS\"" >> $NFS_UTILS_CONFIG
+echo "SMNOTIFYARGS=\"$SMNOTIFY_OPTS\"" >> $NFS_UTILS_CONFIG
+echo "RPCIDMAPDARGS=\"$IDMAPD_OPTS\"" >> $NFS_UTILS_CONFIG
+echo "GSSDARGS=\"$GSSD_OPTS\"" >> $NFS_UTILS_CONFIG
+
+# /etc/conf.d/nfs-server
+echo "RPCMOUNTDARGS=\"$MOUNTD_OPTS\"" >> $NFS_UTILS_CONFIG
+echo "RPCNFSDARGS=\"$NFSD_OPTS\"" >> $NFS_UTILS_CONFIG
+echo "SVCGSSDARGS=\"$SVCGSSD_OPTS\"" >> $NFS_UTILS_CONFIG
+
+echo "Loading modules"
+/usr/bin/modprobe sunrpc
+/usr/bin/modprobe nfs
+/usr/bin/modprobe nfsd
+
+echo "Mounting pipefs filesystem"
+/usr/bin/mount -t rpc_pipefs rpc_pipefs /var/lib/nfs/rpc_pipefs 
+
+echo "Mounting NFS filesystem"
+/usr/bin/mount -t nfsd nfsd /proc/fs/nfsd 
+
+echo "Re-export all directories in /etc/exports"
+/usr/sbin/exportfs -ra > /dev/null
+
+echo "start some nfsd threads"
+rpc.nfsd -- ${PROCESSES:=4}
+
+echo "Start the rpc.mountd daemon"
+exec /usr/sbin/rpc.mountd --foreground

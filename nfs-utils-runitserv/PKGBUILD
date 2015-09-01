@@ -1,0 +1,37 @@
+# Maintainer: Eric Vidal <eric@obarun.org>
+
+pkgname=nfs-utils-runitserv
+pkgver=0.1
+pkgrel=1
+pkgdesc="nfs-utils service for runit"
+arch=(x86_64)
+license=('beerware')
+depends=('nfs-utils-nosystemd' 'runit')
+conflicts=()
+install=nfs-utils-runitserv.install
+source=('nfs-utils.config.log.runit'
+		'nfs-utils.log.run.runit'
+		'nfs-utils.run.runit'
+		'nfs-utils.check.runit'
+		'nfs-utils.finish.runit'
+		'LICENSE'
+		'nfs-utils-runitserv.install')
+md5sums=('e11a97d1ec5ca86034a2db9eb23f4005'
+         '01692baf3b320013ca1e7b5bb67602d9'
+         '87f81ba1e4e882bad8cdb975c3183ba5'
+         '30d2d3c0470940022c8dd91fdcc49774'
+         '0650414bec86f8a808067e1cfbb05b55'
+         '191a37ae657aa17e37e75d0242865dba'
+         '71d93b9f5fca0a2ee6518fb44e625f21')
+
+
+package() {
+	
+	 
+	install -Dm755 "$srcdir/nfs-utils.run.runit" "$pkgdir/etc/sv/nfs-utils/run"
+	install -Dm755 "$srcdir/nfs-utils.check.runit" "$pkgdir/etc/sv/nfs-utils/check"
+	install -Dm755 "$srcdir/nfs-utils.finish.runit" "$pkgdir/etc/sv/nfs-utils/finish"
+    install -Dm755 "$srcdir/nfs-utils.log.run.runit" "$pkgdir/etc/sv/nfs-utils/log/run"
+	install -Dm644 "$srcdir/nfs-utils.config.log.runit" "$pkgdir/var/log/nfs-utils/config"
+	install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/nfs-utils-runitserv/LICENSE"
+}

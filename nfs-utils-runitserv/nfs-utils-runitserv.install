@@ -1,0 +1,17 @@
+pre_install() {
+	if [ -d /etc/sv/nfs-utils ]; then
+		rm -r /etc/sv/nfs-utils
+	fi
+	if [ -d /var/log/nfs-utils ]; then
+		rm -r /var/log/nfs-utils
+	fi
+}
+
+pre_remove() {
+	if [ -L /var/service/nfs-utils ]; then
+		rm /var/service/nfs-utils
+		(sleep 3)
+	fi
+	rm -r /var/log/nfs-utils
+	rm -r /etc/sv/nfs-utils
+}
