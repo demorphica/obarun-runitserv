@@ -2,7 +2,7 @@
 
 pkgname=nfs-utils-runitserv
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="nfs-utils service for runit"
 arch=(x86_64)
 license=('beerware')
@@ -20,7 +20,7 @@ md5sums=('e11a97d1ec5ca86034a2db9eb23f4005'
          '01692baf3b320013ca1e7b5bb67602d9'
          '87f81ba1e4e882bad8cdb975c3183ba5'
          '30d2d3c0470940022c8dd91fdcc49774'
-         '0650414bec86f8a808067e1cfbb05b55'
+         'bc4fb47277c02e52ee3840992a77b7ba'
          '191a37ae657aa17e37e75d0242865dba'
          '71d93b9f5fca0a2ee6518fb44e625f21')
 
