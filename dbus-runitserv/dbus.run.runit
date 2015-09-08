@@ -5,4 +5,4 @@ if [ ! -d /var/run/dbus ]; then
 fi
 exec 2>&1
 /usr/bin/dbus-uuidgen --ensure
-exec dbus-daemon --nofork --nopidfile --config-file=/etc/dbus-1/system.conf
+exec dbus-daemon --nofork --nopidfile --config-file=/usr/share/dbus-1/system.conf

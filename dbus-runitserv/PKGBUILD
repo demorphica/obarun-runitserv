@@ -1,8 +1,8 @@
 # Maintainer: Eric Vidal <eric@obarun.org>
 
 pkgname=dbus-runitserv
-pkgver=0.1
-pkgrel=3
+pkgver=0.2
+pkgrel=1
 pkgdesc="dbus service for runit"
 arch=(x86_64)
 license=('beerware')
@@ -18,7 +18,7 @@ source=('dbus.config.log.runit'
 md5sums=('e11a97d1ec5ca86034a2db9eb23f4005'
          '3a2c18d11ba36111c412285319983d26'
          '2303a9c6e5459a27df4c579385b3ea7b'
-         '65f975d9fbfc7703a05115e24c64d0d5'
+         '8439128d4c3935c63fc0a8d831df6266'
          '191a37ae657aa17e37e75d0242865dba'
          'a51450c859eea985eed59a2c8a8db291')
 
