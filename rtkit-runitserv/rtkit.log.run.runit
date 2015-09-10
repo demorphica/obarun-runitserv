@@ -1,0 +1,5 @@
+#!/usr/bin/sh
+if [ ! -d /var/log/rtkit ]; then
+	mkdir -p /var/log/rtkit
+fi
+exec chpst -uroot svlogd -tt /var/log/rtkit

@@ -1,0 +1,31 @@
+# Maintainer: Eric Vidal <eric@obarun.org>
+
+pkgname=rtkit-runitserv
+pkgver=0.1
+pkgrel=1
+pkgdesc="rtkit service for runit"
+arch=(x86_64)
+license=('beerware')
+depends=('rtkit-nosystemd' 'runit')
+conflicts=()
+install=rtkit-runitserv.install
+source=('rtkit.config.log.runit'
+		'rtkit.log.run.runit'
+		'rtkit.run.runit'
+		'LICENSE'
+		'rtkit-runitserv.install')
+md5sums=('e11a97d1ec5ca86034a2db9eb23f4005'
+         'de82de0ad05bdeb506cc4ca64afe8d16'
+         'c56e928e6d80eb4269420e6960f21d50'
+         '191a37ae657aa17e37e75d0242865dba'
+         'fa61b2dca2c8d24997413a9e9e1b8426')
+
+
+package() {
+	
+	 
+	install -Dm755 "$srcdir/rtkit.run.runit" "$pkgdir/etc/sv/rtkit/run"
+    install -Dm755 "$srcdir/rtkit.log.run.runit" "$pkgdir/etc/sv/rtkit/log/run"
+	install -Dm644 "$srcdir/rtkit.config.log.runit" "$pkgdir/var/log/rtkit/config"
+	install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/rtkit-runitserv/LICENSE"
+}

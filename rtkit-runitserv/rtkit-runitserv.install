@@ -1,0 +1,17 @@
+pre_install() {
+	if [ -d /etc/sv/rtkit ]; then
+		rm -r /etc/sv/rtkit
+	fi
+	if [ -d /var/log/rtkit ]; then
+		rm -r /var/log/rtkit
+	fi
+}
+
+pre_remove() {
+	if [ -L /var/service/rtkit ]; then
+		rm /var/service/rtkit
+		(sleep 3)
+	fi
+	rm -r /var/log/rtkit
+	rm -r /etc/sv/rtkit
+}
