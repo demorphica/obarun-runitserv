@@ -1,8 +1,8 @@
 # Maintainer: Eric Vidal <eric@obarun.org>
 
 pkgname=dhcpcd-runitserv
-pkgver=0.1
-pkgrel=4
+pkgver=0.2
+pkgrel=1
 pkgdesc="dhcpcd service for runit"
 arch=(x86_64)
 license=('beerware')
@@ -18,8 +18,8 @@ source=('dhcpcd.config.log.runit'
 md5sums=('a43bef5572fd4bf6416411ce51a2d110'
          'cb945ed7995be8411db8efd3d3696952'
          '69f2975cc63fac95098865a40146292a'
-         '4bfdc09d244680a3ee706f507764fb35'
-         'ce535b9ff713516c77be43c0ab60cb1b'
+         '3871f96ee2f9eabd9425ffc73e3da68c'
+         'f61219b60dd3f6f9b52b1c60a61a2756'
          '191a37ae657aa17e37e75d0242865dba')
 
 package() {
