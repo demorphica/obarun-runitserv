@@ -1,0 +1,31 @@
+# Maintainer: Eric Vidal <eric@obarun.org>
+
+pkgname=gpm-runitserv
+pkgver=0.1
+pkgrel=1
+pkgdesc="gpm service for runit"
+arch=(x86_64)
+license=('beerware')
+depends=('gpm' 'runit')
+conflicts=()
+install=gpm-runitserv.install
+source=('gpm.config.log.runit'
+		'gpm.log.run.runit'
+		'gpm.run.runit'
+		'LICENSE'
+		'gpm-runitserv.install')
+md5sums=('e11a97d1ec5ca86034a2db9eb23f4005'
+         '96a5e2b1ea24c9d55d11597af7751e8f'
+         'd45002507ebe3dda4fb05a01c3556569'
+         '191a37ae657aa17e37e75d0242865dba'
+         '406862efe1751141129ec252e89645be')
+
+
+package() {
+	
+	 
+	install -Dm755 "$srcdir/gpm.run.runit" "$pkgdir/etc/sv/gpm/run"
+    install -Dm755 "$srcdir/gpm.log.run.runit" "$pkgdir/etc/sv/gpm/log/run"
+	install -Dm644 "$srcdir/gpm.config.log.runit" "$pkgdir/var/log/gpm/config"
+	install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/gpm-runitserv/LICENSE"
+}
