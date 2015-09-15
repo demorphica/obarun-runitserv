@@ -1,0 +1,5 @@
+#!/usr/bin/sh
+if [ ! -d /var/log/haveged ]; then
+	mkdir -p /var/log/haveged
+fi
+exec chpst -uroot svlogd -tt /var/log/haveged

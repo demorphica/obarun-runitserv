@@ -1,0 +1,17 @@
+pre_install() {
+	if [ -d /etc/sv/haveged ]; then
+		rm -r /etc/sv/haveged
+	fi
+	if [ -d /var/log/haveged ]; then
+		rm -r /var/log/haveged
+	fi
+}
+
+pre_remove() {
+	if [ -L /var/service/haveged ]; then
+		rm /var/service/haveged
+		(sleep 3)
+	fi
+	rm -r /var/log/haveged
+	rm -r /etc/sv/haveged
+}

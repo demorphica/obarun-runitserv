@@ -1,0 +1,31 @@
+# Maintainer: Eric Vidal <eric@obarun.org>
+
+pkgname=haveged-runitserv
+pkgver=0.1
+pkgrel=1
+pkgdesc="haveged service for runit"
+arch=(x86_64)
+license=('beerware')
+depends=('haveged' 'runit')
+conflicts=()
+install=haveged-runitserv.install
+source=('haveged.config.log.runit'
+		'haveged.log.run.runit'
+		'haveged.run.runit'
+		'LICENSE'
+		'haveged-runitserv.install')
+md5sums=('e11a97d1ec5ca86034a2db9eb23f4005'
+         '1c547cb38aab27038621166c13deb2a5'
+         '02e04e9061fd0180e9425190c7945029'
+         '191a37ae657aa17e37e75d0242865dba'
+         '0e5977626360d55946238f998db863c8')
+
+
+package() {
+	
+	 
+	install -Dm755 "$srcdir/haveged.run.runit" "$pkgdir/etc/sv/haveged/run"
+    install -Dm755 "$srcdir/haveged.log.run.runit" "$pkgdir/etc/sv/haveged/log/run"
+	install -Dm644 "$srcdir/haveged.config.log.runit" "$pkgdir/var/log/haveged/config"
+	install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/haveged-runitserv/LICENSE"
+}
