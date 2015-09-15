@@ -1,0 +1,5 @@
+#!/usr/bin/sh
+if [ ! -d /var/log/nscd ]; then
+	mkdir -p /var/log/nscd
+fi
+exec chpst -uroot svlogd -tt /var/log/nscd

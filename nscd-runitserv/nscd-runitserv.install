@@ -1,0 +1,17 @@
+pre_install() {
+	if [ -d /etc/sv/nscd ]; then
+		rm -r /etc/sv/nscd
+	fi
+	if [ -d /var/log/nscd ]; then
+		rm -r /var/log/nscd
+	fi
+}
+
+pre_remove() {
+	if [ -L /var/service/nscd ]; then
+		rm /var/service/nscd
+		(sleep 3)
+	fi
+	rm -r /var/log/nscd
+	rm -r /etc/sv/nscd
+}
