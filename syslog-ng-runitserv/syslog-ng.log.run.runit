@@ -1,0 +1,5 @@
+#!/usr/bin/sh
+if [ ! -d /var/log/syslog-ng ]; then
+	mkdir -p /var/log/syslog-ng
+fi
+exec chpst -uroot svlogd -tt /var/log/syslog-ng

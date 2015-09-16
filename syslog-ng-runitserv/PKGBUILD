@@ -1,0 +1,31 @@
+# Maintainer: Eric Vidal <eric@obarun.org>
+
+pkgname=syslog-ng-runitserv
+pkgver=0.1
+pkgrel=1
+pkgdesc="syslog-ng service for runit"
+arch=(x86_64)
+license=('beerware')
+depends=('syslog-ng' 'runit')
+conflicts=()
+install=syslog-ng-runitserv.install
+source=('syslog-ng.config.log.runit'
+		'syslog-ng.log.run.runit'
+		'syslog-ng.run.runit'
+		'LICENSE'
+		'syslog-ng-runitserv.install')
+md5sums=('e11a97d1ec5ca86034a2db9eb23f4005'
+         'a3ced24335e7a0460f73af31f1e2a0fb'
+         'c2fb8f61fc5b68bb7afa2a2af421d736'
+         '191a37ae657aa17e37e75d0242865dba'
+         'b713ec9d6c0de3ea6aa1093022d0724a')
+
+
+package() {
+	
+	 
+	install -Dm755 "$srcdir/syslog-ng.run.runit" "$pkgdir/etc/sv/syslog-ng/run"
+    install -Dm755 "$srcdir/syslog-ng.log.run.runit" "$pkgdir/etc/sv/syslog-ng/log/run"
+	install -Dm644 "$srcdir/syslog-ng.config.log.runit" "$pkgdir/var/log/syslog-ng/config"
+	install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/syslog-ng-runitserv/LICENSE"
+}

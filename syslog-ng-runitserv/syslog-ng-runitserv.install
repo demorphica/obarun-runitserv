@@ -1,0 +1,17 @@
+pre_install() {
+	if [ -d /etc/sv/syslog-ng ]; then
+		rm -r /etc/sv/syslog-ng
+	fi
+	if [ -d /var/log/syslog-ng ]; then
+		rm -r /var/log/syslog-ng
+	fi
+}
+
+pre_remove() {
+	if [ -L /var/service/syslog-ng ]; then
+		rm /var/service/syslog-ng
+		(sleep 3)
+	fi
+	rm -r /var/log/syslog-ng
+	rm -r /etc/sv/syslog-ng
+}
