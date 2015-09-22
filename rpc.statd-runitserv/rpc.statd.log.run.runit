@@ -1,0 +1,5 @@
+#!/usr/bin/sh
+if [ ! -d /var/log/rpc.statd ]; then
+	mkdir -p /var/log/rpc.statd
+fi
+exec chpst -uroot svlogd -tt /var/log/rpc.statd

@@ -1,0 +1,5 @@
+#!/usr/bin/sh
+exec 2>&1
+PID=`pidof -o %PPID /usr/bin/rpc.statd`
+exec /usr/bin/rpc.statd -F -d
+echo $PID > /run/rpc.statd.pid

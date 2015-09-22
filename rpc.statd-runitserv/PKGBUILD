@@ -1,0 +1,31 @@
+# Maintainer: Eric Vidal <eric@obarun.org>
+
+pkgname=rpc.statd-runitserv
+pkgver=0.1
+pkgrel=1
+pkgdesc="rpc.statd service for runit"
+arch=(x86_64)
+license=('beerware')
+depends=('nfs-utils' 'runit')
+conflicts=()
+install=rpc.statd-runitserv.install
+source=('rpc.statd.config.log.runit'
+		'rpc.statd.log.run.runit'
+		'rpc.statd.run.runit'
+		'LICENSE'
+		'rpc.statd-runitserv.install')
+md5sums=('e11a97d1ec5ca86034a2db9eb23f4005'
+         '56948f71620807d528845cd580f885c8'
+         'dd77dbd0189d1edde46d4534a1eeebf1'
+         '191a37ae657aa17e37e75d0242865dba'
+         'dfd4e093db64acf72e54340e5a770af8')
+
+
+package() {
+	
+	 
+	install -Dm755 "$srcdir/rpc.statd.run.runit" "$pkgdir/etc/sv/rpc.statd/run"
+    install -Dm755 "$srcdir/rpc.statd.log.run.runit" "$pkgdir/etc/sv/rpc.statd/log/run"
+	install -Dm644 "$srcdir/rpc.statd.config.log.runit" "$pkgdir/var/log/rpc.statd/config"
+	install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/rpc.statd-runitserv/LICENSE"
+}

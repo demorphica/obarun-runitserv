@@ -1,0 +1,17 @@
+pre_install() {
+	if [ -d /etc/sv/rpc.statd ]; then
+		rm -r /etc/sv/rpc.statd
+	fi
+	if [ -d /var/log/rpc.statd ]; then
+		rm -r /var/log/rpc.statd
+	fi
+}
+
+pre_remove() {
+	if [ -L /var/service/rpc.statd ]; then
+		rm /var/service/rpc.statd
+		(sleep 3)
+	fi
+	rm -r /var/log/rpc.statd
+	rm -r /etc/sv/rpc.statd
+}
