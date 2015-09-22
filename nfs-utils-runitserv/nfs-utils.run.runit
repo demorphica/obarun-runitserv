@@ -41,10 +41,10 @@ echo "Mounting NFS filesystem"
 /usr/bin/mount -t nfsd nfsd /proc/fs/nfsd 
 
 echo "Re-export all directories in /etc/exports"
-/usr/sbin/exportfs -ra > /dev/null
+/usr/bin/exportfs -ra > /dev/null
 
 echo "start some nfsd threads"
 rpc.nfsd -- ${PROCESSES:=4}
 
 echo "Start the rpc.mountd daemon"
-exec /usr/sbin/rpc.mountd --foreground
+exec /usr/bin/rpc.mountd --foreground

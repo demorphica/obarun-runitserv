@@ -17,7 +17,7 @@ source=('nfs-utils.config.log.runit'
 		'nfs-utils-runitserv.install')
 md5sums=('e11a97d1ec5ca86034a2db9eb23f4005'
          '01692baf3b320013ca1e7b5bb67602d9'
-         'eb027031e93fb7c880076e1620bed8b4'
+         '0d24ae0546fe894326f1b2d6bdd9bc9e'
          '0e024e1801175f15350e60ced7bddac1'
          '191a37ae657aa17e37e75d0242865dba'
          '71d93b9f5fca0a2ee6518fb44e625f21')
