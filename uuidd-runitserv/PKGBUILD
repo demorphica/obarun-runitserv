@@ -1,0 +1,31 @@
+# Maintainer: Eric Vidal <eric@obarun.org>
+
+pkgname=uuidd-runitserv
+pkgver=0.1
+pkgrel=1
+pkgdesc="uuidd service for runit"
+arch=(x86_64)
+license=('beerware')
+depends=('util-linux-nosystemd' 'runit')
+conflicts=()
+install=uuidd-runitserv.install
+source=('uuidd.config.log.runit'
+		'uuidd.log.run.runit'
+		'uuidd.run.runit'
+		'LICENSE'
+		'uuidd-runitserv.install')
+md5sums=('e11a97d1ec5ca86034a2db9eb23f4005'
+         '57b2d4c07e5efb0172ca91e2ee3ee8ab'
+         '8293bc1fe681b5ff44ab18cd221b90f2'
+         '191a37ae657aa17e37e75d0242865dba'
+         '8d9910f61c1e1ada1920a3bf23817641')
+
+
+package() {
+	
+	 
+	install -Dm755 "$srcdir/uuidd.run.runit" "$pkgdir/etc/sv/uuidd/run"
+    install -Dm755 "$srcdir/uuidd.log.run.runit" "$pkgdir/etc/sv/uuidd/log/run"
+	install -Dm644 "$srcdir/uuidd.config.log.runit" "$pkgdir/var/log/uuidd/config"
+	install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/uuidd-runitserv/LICENSE"
+}

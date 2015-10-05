@@ -1,0 +1,17 @@
+pre_install() {
+	if [ -d /etc/sv/uuidd ]; then
+		rm -r /etc/sv/uuidd
+	fi
+	if [ -d /var/log/uuidd ]; then
+		rm -r /var/log/uuidd
+	fi
+}
+
+pre_remove() {
+	if [ -L /var/service/uuidd ]; then
+		rm /var/service/uuidd
+		(sleep 3)
+	fi
+	rm -r /var/log/uuidd
+	rm -r /etc/sv/uuidd
+}

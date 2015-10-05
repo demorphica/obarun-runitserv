@@ -1,0 +1,5 @@
+#!/usr/bin/sh
+if [ ! -d /var/log/uuidd ]; then
+	mkdir -p /var/log/uuidd
+fi
+exec chpst -uroot svlogd -tt /var/log/uuidd

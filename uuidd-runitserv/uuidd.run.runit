@@ -1,0 +1,6 @@
+#!/usr/bin/sh
+exec 2>&1
+
+[ ! -d /run/uuidd ] && mkdir -p /run/uuidd
+chown uuidd:uuidd /run/uuidd
+exec chpst -u uuidd:uuidd uuidd -d -F -P
