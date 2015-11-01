@@ -1,0 +1,8 @@
+#!/usr/bin/sh
+exec 2>&1
+if [[ ! -e /etc/iptables/iptables.rules ]]; then
+	echo "You need to create an /etc/iptables/iptables.rules before using this service"
+	exit 0
+fi		
+iptables-restore /etc/iptables/iptables.rules
+exec chpst -b iptables pause

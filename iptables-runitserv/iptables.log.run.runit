@@ -1,0 +1,5 @@
+#!/usr/bin/sh
+if [ ! -d /var/log/iptables ]; then
+	mkdir -p /var/log/iptables
+fi
+exec chpst -uroot svlogd -tt /var/log/iptables

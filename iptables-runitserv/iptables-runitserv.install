@@ -1,0 +1,17 @@
+pre_install() {
+	if [ -d /etc/sv/iptables ]; then
+		rm -r /etc/sv/iptables
+	fi
+	if [ -d /var/log/iptables ]; then
+		rm -r /var/log/iptables
+	fi
+}
+
+pre_remove() {
+	if [ -L /var/service/iptables ]; then
+		rm /var/service/iptables
+		(sleep 3)
+	fi
+	rm -r /var/log/iptables
+	rm -r /etc/sv/iptables
+}

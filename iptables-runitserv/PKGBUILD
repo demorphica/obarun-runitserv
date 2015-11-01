@@ -1,0 +1,32 @@
+# Maintainer: Eric Vidal <eric@obarun.org>
+
+pkgname=iptables-runitserv
+pkgver=0.1
+pkgrel=1
+pkgdesc="iptables service for runit"
+arch=(x86_64)
+license=('beerware')
+depends=('iptables-nosystemd' 'runit')
+conflicts=()
+install=iptables-runitserv.install
+source=('iptables.config.log.runit'
+		'iptables.log.run.runit'
+		'iptables.run.runit'
+		'iptables.finish.runit'
+		'LICENSE'
+		'iptables-runitserv.install')
+md5sums=('e11a97d1ec5ca86034a2db9eb23f4005'
+         '07bfb3f100d75ced4809ffb8b1296fdb'
+         '9a4d223f239fd6a7225e7f44ec8e0c96'
+         'd000a388dc00fcf66f07849f5cd4ba14'
+         '191a37ae657aa17e37e75d0242865dba'
+         '8f9ec9d29d8060596330e8ed474fee54')
+
+
+package() {
+	install -Dm755 "$srcdir/iptables.run.runit" "$pkgdir/etc/sv/iptables/run"
+	install -Dm755 "$srcdir/iptables.finish.runit" "$pkgdir/etc/sv/iptables/finish"
+    install -Dm755 "$srcdir/iptables.log.run.runit" "$pkgdir/etc/sv/iptables/log/run"
+	install -Dm644 "$srcdir/iptables.config.log.runit" "$pkgdir/var/log/iptables/config"
+	install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/iptables-runitserv/LICENSE"
+}
