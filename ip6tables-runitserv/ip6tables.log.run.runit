@@ -1,0 +1,5 @@
+#!/usr/bin/sh
+if [ ! -d /var/log/ip6tables ]; then
+	mkdir -p /var/log/ip6tables
+fi
+exec chpst -uroot svlogd -tt /var/log/ip6tables

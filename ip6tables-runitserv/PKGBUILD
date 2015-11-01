@@ -1,0 +1,32 @@
+# Maintainer: Eric Vidal <eric@obarun.org>
+
+pkgname=ip6tables-runitserv
+pkgver=0.1
+pkgrel=1
+pkgdesc="iptables service for runit"
+arch=(x86_64)
+license=('beerware')
+depends=('iptables-nosystemd' 'runit')
+conflicts=()
+install=ip6tables-runitserv.install
+source=('ip6tables.config.log.runit'
+		'ip6tables.log.run.runit'
+		'ip6tables.run.runit'
+		'ip6tables.finish.runit'
+		'LICENSE'
+		'ip6tables-runitserv.install')
+md5sums=('e11a97d1ec5ca86034a2db9eb23f4005'
+         '7f74c29e5fbea0b3a024eb9d8720c499'
+         '13a2c49f33ab252ddaad3b770609822b'
+         '00138fe73e5c38fc3c21e6cb131de996'
+         '191a37ae657aa17e37e75d0242865dba'
+         '80a864f9471cff1696ad18ec51fcbbb8')
+
+
+package() {
+	install -Dm755 "$srcdir/ip6tables.run.runit" "$pkgdir/etc/sv/ip6tables/run"
+	install -Dm755 "$srcdir/ip6tables.finish.runit" "$pkgdir/etc/sv/ip6tables/finish"
+    install -Dm755 "$srcdir/ip6tables.log.run.runit" "$pkgdir/etc/sv/ip6tables/log/run"
+	install -Dm644 "$srcdir/ip6tables.config.log.runit" "$pkgdir/var/log/ip6tables/config"
+	install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/ip6tables-runitserv/LICENSE"
+}

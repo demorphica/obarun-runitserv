@@ -1,0 +1,17 @@
+pre_install() {
+	if [ -d /etc/sv/ip6tables ]; then
+		rm -r /etc/sv/ip6tables
+	fi
+	if [ -d /var/log/ip6tables ]; then
+		rm -r /var/log/ip6tables
+	fi
+}
+
+pre_remove() {
+	if [ -L /var/service/ip6tables ]; then
+		rm /var/service/ip6tables
+		(sleep 3)
+	fi
+	rm -r /var/log/ip6tables
+	rm -r /etc/sv/ip6tables
+}
