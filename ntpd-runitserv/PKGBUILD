@@ -1,0 +1,29 @@
+# Maintainer: Eric Vidal <eric@obarun.org>
+
+pkgname=ntpd-runitserv
+pkgver=0.1
+pkgrel=1
+pkgdesc="ntpd service for runit"
+arch=(x86_64)
+license=('beerware')
+depends=('ntp' 'runit')
+conflicts=()
+install=ntpd-runitserv.install
+source=('ntpd.config.log.runit'
+		'ntpd.log.run.runit'
+		'ntpd.run.runit'
+		'LICENSE'
+		'ntpd-runitserv.install')
+md5sums=('e11a97d1ec5ca86034a2db9eb23f4005'
+         '8809ba2d9609dec677189f1f228c62b0'
+         'e05756753fa86d29a516e5f5909b7089'
+         '191a37ae657aa17e37e75d0242865dba'
+         'e1d49d2d2caacaf566a566273c4e02da')
+
+
+package() {
+	install -Dm755 "$srcdir/ntpd.run.runit" "$pkgdir/etc/sv/ntpd/run"
+    install -Dm755 "$srcdir/ntpd.log.run.runit" "$pkgdir/etc/sv/ntpd/log/run"
+	install -Dm644 "$srcdir/ntpd.config.log.runit" "$pkgdir/var/log/ntpd/config"
+	install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/ntpd-runitserv/LICENSE"
+}

@@ -1,0 +1,17 @@
+pre_install() {
+	if [ -d /etc/sv/ntpd ]; then
+		rm -r /etc/sv/ntpd
+	fi
+	if [ -d /var/log/ntpd ]; then
+		rm -r /var/log/ntpd
+	fi
+}
+
+pre_remove() {
+	if [ -L /var/service/ntpd ]; then
+		rm /var/service/ntpd
+		(sleep 3)
+	fi
+	rm -r /var/log/ntpd
+	rm -r /etc/sv/ntpd
+}
