@@ -1,0 +1,29 @@
+# Maintainer: Eric Vidal <eric@obarun.org>
+
+pkgname=dmraid-runitserv
+pkgver=0.1
+pkgrel=1
+pkgdesc="dmraid service for runit"
+arch=(x86_64)
+license=('beerware')
+depends=('dmraid-nosystemd' 'runit')
+conflicts=()
+install=dmraid-runitserv.install
+source=('dmraid.config.log.runit'
+		'dmraid.log.run.runit'
+		'dmraid.run.runit'
+		'LICENSE'
+		'dmraid-runitserv.install')
+md5sums=('e11a97d1ec5ca86034a2db9eb23f4005'
+         '8f9316b6a5a266b3d2477ff59248ee79'
+         'ab36d7f98ae479a72b0279c8141f917e'
+         '191a37ae657aa17e37e75d0242865dba'
+         '8d080d4b8096eee5985776e2520c6185')
+
+
+package() {
+	install -Dm755 "$srcdir/dmraid.run.runit" "$pkgdir/etc/sv/dmraid/run"
+    install -Dm755 "$srcdir/dmraid.log.run.runit" "$pkgdir/etc/sv/dmraid/log/run"
+	install -Dm644 "$srcdir/dmraid.config.log.runit" "$pkgdir/var/log/dmraid/config"
+	install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/dmraid-runitserv/LICENSE"
+}

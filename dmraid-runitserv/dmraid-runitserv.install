@@ -1,0 +1,17 @@
+pre_install() {
+	if [ -d /etc/sv/dmraid ]; then
+		rm -r /etc/sv/dmraid
+	fi
+	if [ -d /var/log/dmraid ]; then
+		rm -r /var/log/dmraid
+	fi
+}
+
+pre_remove() {
+	if [ -L /var/service/dmraid ]; then
+		rm /var/service/dmraid
+		(sleep 3)
+	fi
+	rm -r /var/log/dmraid
+	rm -r /etc/sv/dmraid
+}
