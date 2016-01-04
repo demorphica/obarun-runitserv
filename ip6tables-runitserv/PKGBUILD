@@ -5,7 +5,7 @@
 # This package is a part of obarun system at obarun.org
 # Maintainer: Eric Vidal <eric@obarun.org>
 
-pkgname=ip6tables-runitserv
+pkgname=iptables-runitserv
 pkgver=0.1
 pkgrel=2
 pkgdesc="iptables service for runit"
@@ -13,25 +13,25 @@ arch=(x86_64)
 license=('beerware')
 depends=('iptables-nosystemd' 'runit')
 conflicts=()
-install=ip6tables-runitserv.install
-source=('ip6tables.config.log.runit'
-		'ip6tables.log.run.runit'
-		'ip6tables.run.runit'
-		'ip6tables.finish.runit'
+install=iptables-runitserv.install
+source=('iptables.config.log.runit'
+		'iptables.log.run.runit'
+		'iptables.run.runit'
+		'iptables.finish.runit'
 		'LICENSE'
-		'ip6tables-runitserv.install')
+		'iptables-runitserv.install')
 md5sums=('e11a97d1ec5ca86034a2db9eb23f4005'
-         '7f74c29e5fbea0b3a024eb9d8720c499'
-         '13a2c49f33ab252ddaad3b770609822b'
-         '00138fe73e5c38fc3c21e6cb131de996'
+         '07bfb3f100d75ced4809ffb8b1296fdb'
+         '9a4d223f239fd6a7225e7f44ec8e0c96'
+         'd000a388dc00fcf66f07849f5cd4ba14'
          '191a37ae657aa17e37e75d0242865dba'
-         '80a864f9471cff1696ad18ec51fcbbb8')
+         '8f9ec9d29d8060596330e8ed474fee54')
 validpgpkeys=('6DD4217456569BA711566AC7F06E8FDE7B45DAAC') # Eric Vidal
 
 package() {
-	install -Dm755 "$srcdir/ip6tables.run.runit" "$pkgdir/etc/sv/ip6tables/run"
-	install -Dm755 "$srcdir/ip6tables.finish.runit" "$pkgdir/etc/sv/ip6tables/finish"
-    install -Dm755 "$srcdir/ip6tables.log.run.runit" "$pkgdir/etc/sv/ip6tables/log/run"
-	install -Dm644 "$srcdir/ip6tables.config.log.runit" "$pkgdir/var/log/ip6tables/config"
-	install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/ip6tables-runitserv/LICENSE"
+	install -Dm755 "$srcdir/iptables.run.runit" "$pkgdir/etc/sv/iptables/run"
+	install -Dm755 "$srcdir/iptables.finish.runit" "$pkgdir/etc/sv/iptables/finish"
+    install -Dm755 "$srcdir/iptables.log.run.runit" "$pkgdir/etc/sv/iptables/log/run"
+	install -Dm644 "$srcdir/iptables.config.log.runit" "$pkgdir/var/log/iptables/config"
+	install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/iptables-runitserv/LICENSE"
 }
