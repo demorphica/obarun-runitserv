@@ -1,8 +1,14 @@
+# "THE BEER-WARE LICENSE" (Revision 42):
+# <eric@obarun.org> wrote this file.  As long as you retain this notice you
+# can do whatever you want with this stuff. If we meet some day, and you think
+# this stuff is worth it, you can buy me a beer in return.   Eric Vidal
+# This package is a part of obarun system at obarun.org
 # Maintainer: Eric Vidal <eric@obarun.org>
+
 
 pkgname=ntpd-runitserv
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="ntpd service for runit"
 arch=(x86_64)
 license=('beerware')
@@ -19,7 +25,7 @@ md5sums=('e11a97d1ec5ca86034a2db9eb23f4005'
          'c0136def55647a92caf3db9f5c58625c'
          '191a37ae657aa17e37e75d0242865dba'
          'e1d49d2d2caacaf566a566273c4e02da')
-
+validpgpkeys=('6DD4217456569BA711566AC7F06E8FDE7B45DAAC') # Eric Vidal
 
 package() {
 	install -Dm755 "$srcdir/ntpd.run.runit" "$pkgdir/etc/sv/ntpd/run"
