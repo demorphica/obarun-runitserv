@@ -1,8 +1,13 @@
+# "THE BEER-WARE LICENSE" (Revision 42):
+# <eric@obarun.org> wrote this file.  As long as you retain this notice you
+# can do whatever you want with this stuff. If we meet some day, and you think
+# this stuff is worth it, you can buy me a beer in return.   Eric Vidal
+# This package is a part of obarun system at obarun.org
 # Maintainer: Eric Vidal <eric@obarun.org>
 
 pkgname=iptables-runitserv
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="iptables service for runit"
 arch=(x86_64)
 license=('beerware')
@@ -21,7 +26,7 @@ md5sums=('e11a97d1ec5ca86034a2db9eb23f4005'
          'd000a388dc00fcf66f07849f5cd4ba14'
          '191a37ae657aa17e37e75d0242865dba'
          '8f9ec9d29d8060596330e8ed474fee54')
-
+validpgpkeys=('6DD4217456569BA711566AC7F06E8FDE7B45DAAC') # Eric Vidal
 
 package() {
 	install -Dm755 "$srcdir/iptables.run.runit" "$pkgdir/etc/sv/iptables/run"
