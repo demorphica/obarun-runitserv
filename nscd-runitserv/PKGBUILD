@@ -1,8 +1,13 @@
+# "THE BEER-WARE LICENSE" (Revision 42):
+# <eric@obarun.org> wrote this file.  As long as you retain this notice you
+# can do whatever you want with this stuff. If we meet some day, and you think
+# this stuff is worth it, you can buy me a beer in return.   Eric Vidal
+# This package is a part of obarun system at obarun.org
 # Maintainer: Eric Vidal <eric@obarun.org>
 
 pkgname=nscd-runitserv
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="nscd service for runit"
 arch=(x86_64)
 license=('beerware')
@@ -21,7 +26,7 @@ md5sums=('e11a97d1ec5ca86034a2db9eb23f4005'
          '440640577e13fe5679a230bac4cdb0d0'
          '191a37ae657aa17e37e75d0242865dba'
          'f621372a0e287633ccb4ad497bf2927e')
-
+validpgpkeys=('6DD4217456569BA711566AC7F06E8FDE7B45DAAC') # Eric Vidal
 
 package() {
 	
