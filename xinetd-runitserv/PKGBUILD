@@ -1,31 +1,39 @@
+# "THE BEER-WARE LICENSE" (Revision 42):
+# <eric@obarun.org> wrote this file.  As long as you retain this notice you
+# can do whatever you want with this stuff. If we meet some day, and you think
+# this stuff is worth it, you can buy me a beer in return.   Eric Vidal
+# This package is a part of obarun system at obarun.org
 # Maintainer: Eric Vidal <eric@obarun.org>
 
-pkgname=syslog-ng-runitserv
+pkgname=xinetd-runitserv
 pkgver=0.1
-pkgrel=2
-pkgdesc="syslog-ng service for runit"
+pkgrel=3
+pkgdesc="xinetd service for runit"
 arch=(x86_64)
 license=('beerware')
-depends=('syslog-ng-nosystemd' 'runit')
+depends=('inetutils' 'syslog-ng-nosystemd' 'runit')
 conflicts=()
-install=syslog-ng-runitserv.install
-source=('syslog-ng.config.log.runit'
-		'syslog-ng.log.run.runit'
-		'syslog-ng.run.runit'
+install=xinetd-runitserv.install
+source=('xinetd.config.log.runit'
+		'xinetd.log.run.runit'
+		'xinetd.run.runit'
+		'xinetd.finish.runit'
 		'LICENSE'
-		'syslog-ng-runitserv.install')
+		'xinetd-runitserv.install')
 md5sums=('e11a97d1ec5ca86034a2db9eb23f4005'
-         'a3ced24335e7a0460f73af31f1e2a0fb'
-         'c2fb8f61fc5b68bb7afa2a2af421d736'
+         '56d56929cf463b06dcf9ad0ff4f0713b'
+         '94bfb92bdaeec3ea1ac3495a04c1db76'
+         'f93755b3fe958c0ad7988395afbee6f4'
          '191a37ae657aa17e37e75d0242865dba'
-         'b713ec9d6c0de3ea6aa1093022d0724a')
-
+         'd595d5da6f1b5a7a836c88581f85364f')
+validpgpkeys=('6DD4217456569BA711566AC7F06E8FDE7B45DAAC') # Eric Vidal
 
 package() {
 	
 	 
-	install -Dm755 "$srcdir/syslog-ng.run.runit" "$pkgdir/etc/sv/syslog-ng/run"
-    install -Dm755 "$srcdir/syslog-ng.log.run.runit" "$pkgdir/etc/sv/syslog-ng/log/run"
-	install -Dm644 "$srcdir/syslog-ng.config.log.runit" "$pkgdir/var/log/syslog-ng/config"
-	install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/syslog-ng-runitserv/LICENSE"
+	install -Dm755 "$srcdir/xinetd.run.runit" "$pkgdir/etc/sv/xinetd/run"
+	install -Dm755 "$srcdir/xinetd.finish.runit" "$pkgdir/etc/sv/xinetd/finish"
+    install -Dm755 "$srcdir/xinetd.log.run.runit" "$pkgdir/etc/sv/xinetd/log/run"
+	install -Dm644 "$srcdir/xinetd.config.log.runit" "$pkgdir/var/log/xinetd/config"
+	install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/xinetd-runitserv/LICENSE"
 }
