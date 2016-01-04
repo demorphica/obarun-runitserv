@@ -1,8 +1,13 @@
+# "THE BEER-WARE LICENSE" (Revision 42):
+# <eric@obarun.org> wrote this file.  As long as you retain this notice you
+# can do whatever you want with this stuff. If we meet some day, and you think
+# this stuff is worth it, you can buy me a beer in return.   Eric Vidal
+# This package is a part of obarun system at obarun.org
 # Maintainer: Eric Vidal <eric@obarun.org>
 
 pkgname=dmraid-runitserv
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="dmraid service for runit"
 arch=(x86_64)
 license=('beerware')
@@ -19,7 +24,7 @@ md5sums=('e11a97d1ec5ca86034a2db9eb23f4005'
          'ab36d7f98ae479a72b0279c8141f917e'
          '191a37ae657aa17e37e75d0242865dba'
          '8d080d4b8096eee5985776e2520c6185')
-
+validpgpkeys=('6DD4217456569BA711566AC7F06E8FDE7B45DAAC') # Eric Vidal
 
 package() {
 	install -Dm755 "$srcdir/dmraid.run.runit" "$pkgdir/etc/sv/dmraid/run"
