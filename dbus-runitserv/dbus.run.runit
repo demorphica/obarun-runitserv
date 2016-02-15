@@ -1,7 +1,7 @@
-#!/usr/bin/sh
+#!/usr/bin/bash
 
-if [ ! -d /var/run/dbus ]; then
-  mkdir -p /var/run/dbus
+if ! [ -d /run/dbus ]; then
+  mkdir -p -m0755 /run/dbus
 fi
 exec 2>&1
 /usr/bin/dbus-uuidgen --ensure
