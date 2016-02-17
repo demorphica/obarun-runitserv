@@ -1,0 +1,17 @@
+pre_install() {
+	if [ -d /etc/sv/sddm ]; then
+		rm -r /etc/sv/sddm
+	fi
+	if [ -d /var/log/sddm ]; then
+		rm -r /var/log/sddm
+	fi
+}
+
+pre_remove() {
+	if [ -L /var/service/sddm ]; then
+		rm /var/service/sddm
+		(sleep 3)
+	fi
+	rm -r /var/log/sddm
+	rm -r /etc/sv/sddm
+}

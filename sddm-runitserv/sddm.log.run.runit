@@ -1,0 +1,5 @@
+#!/usr/bin/bash
+if ! [ -d /var/log/sddm ]; then
+	mkdir -p -m0755 /var/log/sddm
+fi
+exec chpst -uroot svlogd -tt /var/log/sddm

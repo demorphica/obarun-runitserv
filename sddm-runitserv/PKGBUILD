@@ -1,0 +1,29 @@
+# Maintainer: Eric Vidal <eric@obarun.org>
+
+pkgname=sddm-runitserv
+pkgver=0.1
+pkgrel=1
+pkgdesc="sddm service for runit"
+arch=(x86_64)
+license=('beerware')
+depends=('sddm' 'runit')
+conflicts=()
+install=sddm-runitserv.install
+source=('sddm.config.log.runit'
+		'sddm.log.run.runit'
+		'sddm.run.runit'
+		'LICENSE'
+		'sddm-runitserv.install')
+md5sums=('e11a97d1ec5ca86034a2db9eb23f4005'
+         'dc62444f77e5a4db833386cb12368355'
+         '200e6ee81956561ddad9726a2fb3ec06'
+         '191a37ae657aa17e37e75d0242865dba'
+         'aa0e3760d494d0291a1ec13fa11196da')
+
+
+package() {
+	install -Dm755 "$srcdir/sddm.run.runit" "$pkgdir/etc/sv/sddm/run"
+    install -Dm755 "$srcdir/sddm.log.run.runit" "$pkgdir/etc/sv/sddm/log/run"
+	install -Dm644 "$srcdir/sddm.config.log.runit" "$pkgdir/var/log/sddm/config"
+	install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/sddm-runitserv/LICENSE"
+}
