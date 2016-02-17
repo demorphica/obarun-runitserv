@@ -1,0 +1,17 @@
+pre_install() {
+	if [ -d /etc/sv/networkmanager ]; then
+		rm -r /etc/sv/networkmanager
+	fi
+	if [ -d /var/log/networkmanager ]; then
+		rm -r /var/log/networkmanager
+	fi
+}
+
+pre_remove() {
+	if [ -L /var/service/networkmanager ]; then
+		rm /var/service/networkmanager
+		(sleep 3)
+	fi
+	rm -r /var/log/networkmanager
+	rm -r /etc/sv/networkmanager
+}

@@ -1,0 +1,29 @@
+# Maintainer: Eric Vidal <eric@obarun.org>
+
+pkgname=networkmanager-runitserv
+pkgver=0.1
+pkgrel=1
+pkgdesc="networkmanager service for runit"
+arch=(x86_64)
+license=('beerware')
+depends=('networkmanager' 'runit')
+conflicts=()
+install=networkmanager-runitserv.install
+source=('networkmanager.config.log.runit'
+		'networkmanager.log.run.runit'
+		'networkmanager.run.runit'
+		'LICENSE'
+		'networkmanager-runitserv.install')
+md5sums=('e11a97d1ec5ca86034a2db9eb23f4005'
+         '315bb054b146462fdcfac664aa4a0cb4'
+         '99730b90523c9dac44918a52baa2fa34'
+         '191a37ae657aa17e37e75d0242865dba'
+         'adedb2bf469040f44ea7756ada1a8398')
+
+
+package() {
+	install -Dm755 "$srcdir/networkmanager.run.runit" "$pkgdir/etc/sv/networkmanager/run"
+    install -Dm755 "$srcdir/networkmanager.log.run.runit" "$pkgdir/etc/sv/networkmanager/log/run"
+	install -Dm644 "$srcdir/networkmanager.config.log.runit" "$pkgdir/var/log/networkmanager/config"
+	install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/networkmanager-runitserv/LICENSE"
+}
