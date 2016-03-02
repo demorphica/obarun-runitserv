@@ -1,0 +1,17 @@
+pre_install() {
+	if [ -d /etc/sv/consolekit ]; then
+		rm -r /etc/sv/consolekit
+	fi
+	if [ -d /var/log/consolekit ]; then
+		rm -r /var/log/consolekit
+	fi
+}
+
+pre_remove() {
+	if [ -L /var/service/consolekit ]; then
+		rm /var/service/consolekit
+		(sleep 3)
+	fi
+	rm -r /var/log/consolekit
+	rm -r /etc/sv/consolekit
+}

@@ -1,0 +1,5 @@
+#!/usr/bin/bash
+if ! [ -d /var/log/consolekit ]; then
+	mkdir -p -m0755 /var/log/consolekit
+fi
+exec chpst -uroot svlogd -tt /var/log/consolekit

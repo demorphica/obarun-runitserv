@@ -1,0 +1,29 @@
+# Maintainer: Eric Vidal <eric@obarun.org>
+
+pkgname=consolekit-runitserv
+pkgver=0.1
+pkgrel=1
+pkgdesc="consolekit service for runit"
+arch=(x86_64)
+license=('beerware')
+depends=('consolekit2' 'runit')
+conflicts=()
+install=consolekit-runitserv.install
+source=('consolekit.config.log.runit'
+		'consolekit.log.run.runit'
+		'consolekit.run.runit'
+		'LICENSE'
+		'consolekit-runitserv.install')
+md5sums=('e11a97d1ec5ca86034a2db9eb23f4005'
+         '31e20ae74e520fdfd573d063e85aa02b'
+         '3c8ecf4fec0eec8d4eede4b0a0ad4365'
+         '191a37ae657aa17e37e75d0242865dba'
+         '5cfce98a421382b967b6fff1f27fb38d')
+
+
+package() {
+	install -Dm755 "$srcdir/consolekit.run.runit" "$pkgdir/etc/sv/consolekit/run"
+    install -Dm755 "$srcdir/consolekit.log.run.runit" "$pkgdir/etc/sv/consolekit/log/run"
+	install -Dm644 "$srcdir/consolekit.config.log.runit" "$pkgdir/var/log/consolekit/config"
+	install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/consolekit-runitserv/LICENSE"
+}
