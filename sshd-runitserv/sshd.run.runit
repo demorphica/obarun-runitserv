@@ -1,7 +1,7 @@
 #!/usr/bin/sh
 
 if ! [ -d /var/empty ]; then
-	mkdir -p -m 0711 /var/empty
+	mkdir -p -m0755 /var/empty
 fi
 . /etc/ssh/sshd_config
 exec 2>&1
