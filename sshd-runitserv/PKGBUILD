@@ -21,7 +21,7 @@ source=('sshd.config.log.runit'
 		'sshd-runitserv.install')
 md5sums=('e11a97d1ec5ca86034a2db9eb23f4005'
          '7130b6bf11a9536508350ebeab888158'
-         'dc529f307aa21acaafb0d7c13803fe01'
+         '2e2c234d9b116013375bc880fca51223'
          '191a37ae657aa17e37e75d0242865dba'
          'a7a9239e09b0bab77852ac4bce0fe5f7')
 validpgpkeys=('6DD4217456569BA711566AC7F06E8FDE7B45DAAC') # Eric Vidal
