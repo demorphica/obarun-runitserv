@@ -1,0 +1,5 @@
+#!/usr/bin/sh
+if [ ! -d /var/log/sshd ]; then
+	mkdir -p /var/log/sshd
+fi
+exec chpst -uroot svlogd -tt /var/log/sshd

@@ -1,0 +1,17 @@
+pre_install() {
+	if [ -d /etc/sv/sshd ]; then
+		rm -r /etc/sv/sshd
+	fi
+	if [ -d /var/log/sshd ]; then
+		rm -r /var/log/sshd
+	fi
+}
+
+pre_remove() {
+	if [ -L /var/service/sshd ]; then
+		rm /var/service/sshd
+		(sleep 3)
+	fi
+	rm -r /var/log/sshd
+	rm -r /etc/sv/sshd
+}

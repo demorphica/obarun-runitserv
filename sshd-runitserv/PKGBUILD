@@ -1,0 +1,34 @@
+# "THE BEER-WARE LICENSE" (Revision 42):
+# <eric@obarun.org> wrote this file.  As long as you retain this notice you
+# can do whatever you want with this stuff. If we meet some day, and you think
+# this stuff is worth it, you can buy me a beer in return.   Eric Vidal
+# This package is a part of obarun system at obarun.org
+# Maintainer: Eric Vidal <eric@obarun.org>
+
+pkgname=sshd-runitserv
+pkgver=0.1
+pkgrel=1
+pkgdesc="sshd service for runit"
+arch=(x86_64)
+license=('beerware')
+depends=('openssh' 'runit')
+conflicts=()
+install=sshd-runitserv.install
+source=('sshd.config.log.runit'
+		'sshd.log.run.runit'
+		'sshd.run.runit'
+		'LICENSE'
+		'sshd-runitserv.install')
+md5sums=('e11a97d1ec5ca86034a2db9eb23f4005'
+         '7130b6bf11a9536508350ebeab888158'
+         'dc529f307aa21acaafb0d7c13803fe01'
+         '191a37ae657aa17e37e75d0242865dba'
+         'a7a9239e09b0bab77852ac4bce0fe5f7')
+validpgpkeys=('6DD4217456569BA711566AC7F06E8FDE7B45DAAC') # Eric Vidal
+
+package() {
+	install -Dm755 "$srcdir/sshd.run.runit" "$pkgdir/etc/sv/sshd/run"
+    install -Dm755 "$srcdir/sshd.log.run.runit" "$pkgdir/etc/sv/sshd/log/run"
+	install -Dm644 "$srcdir/sshd.config.log.runit" "$pkgdir/var/log/sshd/config"
+	install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/sshd-runitserv/LICENSE"
+}
