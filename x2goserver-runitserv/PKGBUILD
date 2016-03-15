@@ -2,7 +2,7 @@
 
 pkgname=x2goserver-runitserv
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="x2goserver service for runit"
 arch=(x86_64)
 license=('beerware')
@@ -19,7 +19,7 @@ md5sums=('e11a97d1ec5ca86034a2db9eb23f4005'
          '7bd6c355a581c2f7b9423bc50d2cc24a'
          '191a37ae657aa17e37e75d0242865dba'
          '2e4f0d36af9b0358700f6c55f75e6443')
-
+validpgpkeys=('6DD4217456569BA711566AC7F06E8FDE7B45DAAC') # Eric Vidal
 
 package() {
 	install -Dm755 "$srcdir/x2goserver.run.runit" "$pkgdir/etc/sv/x2goserver/run"
