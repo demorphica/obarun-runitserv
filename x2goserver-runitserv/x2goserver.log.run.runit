@@ -1,0 +1,5 @@
+#!/usr/bin/bash
+if ! [ -d /var/log/x2goserver ]; then
+	mkdir -p -m0755 /var/log/x2goserver
+fi
+exec chpst -uroot svlogd -tt /var/log/x2goserver

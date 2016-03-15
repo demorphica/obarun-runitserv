@@ -1,0 +1,10 @@
+#!/usr/bin/bash
+
+# load needed modules
+/usr/bin/modprobe -q fuse 
+
+# create database
+chpst -b /usr/bin/x2godbadmin --createdb
+
+exec 2>&1
+exec chpst -b /usr/sbin/x2gocleansessions pause

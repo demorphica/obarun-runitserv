@@ -1,0 +1,17 @@
+pre_install() {
+	if [ -d /etc/sv/x2goserver ]; then
+		rm -r /etc/sv/x2goserver
+	fi
+	if [ -d /var/log/x2goserver ]; then
+		rm -r /var/log/x2goserver
+	fi
+}
+
+pre_remove() {
+	if [ -L /var/service/x2goserver ]; then
+		rm /var/service/x2goserver
+		(sleep 3)
+	fi
+	rm -r /var/log/x2goserver
+	rm -r /etc/sv/x2goserver
+}
