@@ -1,0 +1,17 @@
+pre_install() {
+	if [ -d /etc/sv/udisks ]; then
+		rm -r /etc/sv/udisks
+	fi
+	if [ -d /var/log/udisks ]; then
+		rm -r /var/log/udisks
+	fi
+}
+
+pre_remove() {
+	if [ -L /var/service/udisks ]; then
+		rm /var/service/udisks
+		(sleep 3)
+	fi
+	rm -r /var/log/udisks
+	rm -r /etc/sv/udisks
+}

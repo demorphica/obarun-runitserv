@@ -1,0 +1,29 @@
+# Maintainer: Eric Vidal <eric@obarun.org>
+
+pkgname=udisks-runitserv
+pkgver=0.1
+pkgrel=1
+pkgdesc="udisks service for runit"
+arch=(x86_64)
+license=('beerware')
+depends=('udisks' 'runit')
+conflicts=()
+install=udisks-runitserv.install
+source=('udisks.config.log.runit'
+		'udisks.log.run.runit'
+		'udisks.run.runit'
+		'LICENSE'
+		'udisks-runitserv.install')
+md5sums=('e11a97d1ec5ca86034a2db9eb23f4005'
+         '831e2e7b2422586c78be2477d79f0900'
+         '63b4f41f2470e1a1cc5cbd096880e2a5'
+         '191a37ae657aa17e37e75d0242865dba'
+         '692bf28179238f1d244a3563d0ee3a07')
+
+
+package() {
+	install -Dm755 "$srcdir/udisks.run.runit" "$pkgdir/etc/sv/udisks/run"
+    install -Dm755 "$srcdir/udisks.log.run.runit" "$pkgdir/etc/sv/udisks/log/run"
+	install -Dm644 "$srcdir/udisks.config.log.runit" "$pkgdir/var/log/udisks/config"
+	install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/udisks-runitserv/LICENSE"
+}

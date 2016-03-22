@@ -1,0 +1,4 @@
+#!/usr/bin/bash
+
+exec 2>&1
+exec /usr/lib/udisks/udisks-daemon

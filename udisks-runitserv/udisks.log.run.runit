@@ -1,0 +1,5 @@
+#!/usr/bin/bash
+if ! [ -d /var/log/udisks ]; then
+	mkdir -p -m0755 /var/log/udisks
+fi
+exec chpst -uroot svlogd -tt /var/log/udisks
