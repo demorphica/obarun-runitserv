@@ -1,0 +1,31 @@
+# Maintainer: Eric Vidal <eric@obarun.org>
+
+pkgname=nmbd-runitserv
+pkgver=0.1
+pkgrel=1
+pkgdesc="nmbd service for runit"
+arch=(x86_64)
+license=('beerware')
+depends=('samba-nosystemd' 'runit')
+conflicts=()
+install=nmbd-runitserv.install
+source=('nmbd.config.log.runit'
+		'nmbd.log.run.runit'
+		'nmbd.run.runit'
+		'LICENSE'
+		'nmbd-runitserv.install')
+md5sums=('e11a97d1ec5ca86034a2db9eb23f4005'
+         '3f56a51ace01b9658392dcc40c93fa71'
+         '15d5f477a0ddc8719bee0469faaca050'
+         '191a37ae657aa17e37e75d0242865dba'
+         '61fd010e2e12897249be8de1467bc7df')
+validpgpkeys=('6DD4217456569BA711566AC7F06E8FDE7B45DAAC') # Eric Vidal
+
+package() {
+	
+	 
+	install -Dm755 "$srcdir/nmbd.run.runit" "$pkgdir/etc/sv/nmbd/run"
+    install -Dm755 "$srcdir/nmbd.log.run.runit" "$pkgdir/etc/sv/nmbd/log/run"
+	install -Dm644 "$srcdir/nmbd.config.log.runit" "$pkgdir/var/log/nmbd/config"
+	install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/nmbd-runitserv/LICENSE"
+}

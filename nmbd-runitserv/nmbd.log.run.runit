@@ -1,0 +1,5 @@
+#!/usr/bin/sh
+if [ ! -d /var/log/nmbd ]; then
+	mkdir -p /var/log/nmbd
+fi
+exec chpst -uroot svlogd -tt /var/log/nmbd

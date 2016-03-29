@@ -1,0 +1,17 @@
+pre_install() {
+	if [ -d /etc/sv/nmbd ]; then
+		rm -r /etc/sv/nmbd
+	fi
+	if [ -d /var/log/nmbd ]; then
+		rm -r /var/log/nmbd
+	fi
+}
+
+pre_remove() {
+	if [ -L /var/service/nmbd ]; then
+		rm /var/service/nmbd
+		(sleep 3)
+	fi
+	rm -r /var/log/nmbd
+	rm -r /etc/sv/nmbd
+}

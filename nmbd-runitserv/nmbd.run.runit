@@ -1,0 +1,10 @@
+#!/usr/bin/sh
+exec 2>&1
+
+if ! [  -d /run/samba ]; then
+	mkdir -p -m0755 /run/samba
+fi
+
+PID=`pidof -o %PPID /usr/bin/nmbd`
+exec /usr/bin/nmbd -F -S
+echo $PID > /run/nmbd.pid
