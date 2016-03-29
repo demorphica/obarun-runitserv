@@ -1,0 +1,31 @@
+# Maintainer: Eric Vidal <eric@obarun.org>
+
+pkgname=smbd-runitserv
+pkgver=0.1
+pkgrel=1
+pkgdesc="smbd service for runit"
+arch=(x86_64)
+license=('beerware')
+depends=('samba' 'runit')
+conflicts=()
+install=smbd-runitserv.install
+source=('smbd.config.log.runit'
+		'smbd.log.run.runit'
+		'smbd.run.runit'
+		'LICENSE'
+		'smbd-runitserv.install')
+md5sums=('e11a97d1ec5ca86034a2db9eb23f4005'
+         '56beb5619710473c04895bcd55c8f06a'
+         '47b37ce295b8a2ecd2456597ef053258'
+         '191a37ae657aa17e37e75d0242865dba'
+         '8064b65369d09fc07cdbd4a2b136ca8d')
+validpgpkeys=('6DD4217456569BA711566AC7F06E8FDE7B45DAAC') # Eric Vidal
+
+package() {
+	
+	 
+	install -Dm755 "$srcdir/smbd.run.runit" "$pkgdir/etc/sv/smbd/run"
+    install -Dm755 "$srcdir/smbd.log.run.runit" "$pkgdir/etc/sv/smbd/log/run"
+	install -Dm644 "$srcdir/smbd.config.log.runit" "$pkgdir/var/log/smbd/config"
+	install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/smbd-runitserv/LICENSE"
+}

@@ -1,0 +1,17 @@
+pre_install() {
+	if [ -d /etc/sv/smbd ]; then
+		rm -r /etc/sv/smbd
+	fi
+	if [ -d /var/log/smbd ]; then
+		rm -r /var/log/smbd
+	fi
+}
+
+pre_remove() {
+	if [ -L /var/service/smbd ]; then
+		rm /var/service/smbd
+		(sleep 3)
+	fi
+	rm -r /var/log/smbd
+	rm -r /etc/sv/smbd
+}
