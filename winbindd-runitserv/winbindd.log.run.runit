@@ -1,0 +1,5 @@
+#!/usr/bin/sh
+if [ ! -d /var/log/winbindd ]; then
+	mkdir -p /var/log/winbindd
+fi
+exec chpst -uroot svlogd -tt /var/log/winbindd

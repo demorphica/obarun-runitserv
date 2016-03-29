@@ -1,0 +1,31 @@
+# Maintainer: Eric Vidal <eric@obarun.org>
+
+pkgname=winbindd-runitserv
+pkgver=0.1
+pkgrel=1
+pkgdesc="winbindd service for runit"
+arch=(x86_64)
+license=('beerware')
+depends=('samba' 'runit')
+conflicts=()
+install=winbindd-runitserv.install
+source=('winbindd.config.log.runit'
+		'winbindd.log.run.runit'
+		'winbindd.run.runit'
+		'LICENSE'
+		'winbindd-runitserv.install')
+md5sums=('e11a97d1ec5ca86034a2db9eb23f4005'
+         'b1c2126014784c508018d6d83c3dd619'
+         '6c9920d7da2e2e8a6373fefdfb85adc3'
+         '191a37ae657aa17e37e75d0242865dba'
+         '0434d7126226bb460c578dcd33e3a3e8')
+validpgpkeys=('6DD4217456569BA711566AC7F06E8FDE7B45DAAC') # Eric Vidal
+
+package() {
+	
+	 
+	install -Dm755 "$srcdir/winbindd.run.runit" "$pkgdir/etc/sv/winbindd/run"
+    install -Dm755 "$srcdir/winbindd.log.run.runit" "$pkgdir/etc/sv/winbindd/log/run"
+	install -Dm644 "$srcdir/winbindd.config.log.runit" "$pkgdir/var/log/winbindd/config"
+	install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/winbindd-runitserv/LICENSE"
+}

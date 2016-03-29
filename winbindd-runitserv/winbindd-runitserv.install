@@ -1,0 +1,17 @@
+pre_install() {
+	if [ -d /etc/sv/winbindd ]; then
+		rm -r /etc/sv/winbindd
+	fi
+	if [ -d /var/log/winbindd ]; then
+		rm -r /var/log/winbindd
+	fi
+}
+
+pre_remove() {
+	if [ -L /var/service/winbindd ]; then
+		rm /var/service/winbindd
+		(sleep 3)
+	fi
+	rm -r /var/log/winbindd
+	rm -r /etc/sv/winbindd
+}
