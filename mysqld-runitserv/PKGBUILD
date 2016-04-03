@@ -1,0 +1,32 @@
+# Maintainer: Eric Vidal <eric@obarun.org>
+
+pkgname=mysqld-runitserv
+pkgver=0.1
+pkgrel=1
+pkgdesc="mysqld service for runit"
+arch=(x86_64)
+license=('beerware')
+depends=('mariadb' 'runit')
+conflicts=()
+install=mysqld-runitserv.install
+source=('mysqld.config.log.runit'
+		'mysqld.log.run.runit'
+		'mysqld.run.runit'
+		'mysqld.finish.runit'
+		'LICENSE'
+		'mysqld-runitserv.install')
+md5sums=('e11a97d1ec5ca86034a2db9eb23f4005'
+         '87f73985c2dff535eede01a9f616fa98'
+         'a0b7ee2a929a4cc59e6ef54dbbd60fda'
+         '80fab6fa2a705dcc7158c6ddf0795d84'
+         '191a37ae657aa17e37e75d0242865dba'
+         '406862efe1751141129ec252e89645be')
+
+
+package() {
+	install -Dm755 "$srcdir/mysqld.run.runit" "$pkgdir/etc/sv/mysqld/run"
+	install -Dm755 "$srcdir/mysqld.finish.runit" "$pkgdir/etc/sv/mysqld/finish"
+    install -Dm755 "$srcdir/mysqld.log.run.runit" "$pkgdir/etc/sv/mysqld/log/run"
+	install -Dm644 "$srcdir/mysqld.config.log.runit" "$pkgdir/var/log/mysqld/config"
+	install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/mysqld-runitserv/LICENSE"
+}

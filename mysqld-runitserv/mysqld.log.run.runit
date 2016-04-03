@@ -1,0 +1,5 @@
+#!/usr/bin/sh
+if [ ! -d /var/log/mysqld ]; then
+	mkdir -p /var/log/mysqld
+fi
+exec chpst -uroot svlogd -tt /var/log/mysqld

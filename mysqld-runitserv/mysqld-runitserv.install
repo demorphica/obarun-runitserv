@@ -1,0 +1,17 @@
+pre_install() {
+	if [ -d /etc/sv/base ]; then
+		rm -r /etc/sv/base
+	fi
+	if [ -d /var/log/base ]; then
+		rm -r /var/log/base
+	fi
+}
+
+pre_remove() {
+	if [ -L /var/service/base ]; then
+		rm /var/service/base
+		(sleep 3)
+	fi
+	rm -r /var/log/base
+	rm -r /etc/sv/base
+}

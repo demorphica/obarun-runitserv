@@ -1,0 +1,9 @@
+#!/usr/bin/sh
+
+if ! [ -d /run/mysqld ];then
+	mkdir -p -m0755 /run/mysqld
+	chown mysql:mysql /run/mysqld
+fi
+
+exec 2>&1
+exec chpst -umysql /usr/bin/mysqld --pid-file=/run/mysqld/mysqld.pid

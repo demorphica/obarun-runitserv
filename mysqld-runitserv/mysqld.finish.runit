@@ -1,0 +1,5 @@
+#!/usr/bin/sh
+
+exec 2>&1
+
+exec chpst -umysql /usr/bin/mysqld-post
