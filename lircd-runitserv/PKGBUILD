@@ -1,0 +1,29 @@
+# Maintainer: Eric Vidal <eric@obarun.org>
+
+pkgname=lircd-runitserv
+pkgver=0.1
+pkgrel=1
+pkgdesc="lircd service for runit"
+arch=(x86_64)
+license=('beerware')
+depends=('lirc' 'runit')
+conflicts=()
+install=lircd-runitserv.install
+source=('lircd.config.log.runit'
+		'lircd.log.run.runit'
+		'lircd.run.runit'
+		'LICENSE'
+		'lircd-runitserv.install')
+md5sums=('e11a97d1ec5ca86034a2db9eb23f4005'
+         '10f5d8ab7ce41378fc4d621835588c25'
+         '5f3665a05deb70696d2ca10a787dd4bf'
+         '191a37ae657aa17e37e75d0242865dba'
+         '421a36af4dfe087d284d0bda9fe092b4')
+
+
+package() {
+	install -Dm755 "$srcdir/lircd.run.runit" "$pkgdir/etc/sv/lircd/run"
+    install -Dm755 "$srcdir/lircd.log.run.runit" "$pkgdir/etc/sv/lircd/log/run"
+	install -Dm644 "$srcdir/lircd.config.log.runit" "$pkgdir/var/log/lircd/config"
+	install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/lircd-runitserv/LICENSE"
+}

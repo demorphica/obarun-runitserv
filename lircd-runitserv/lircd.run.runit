@@ -1,0 +1,8 @@
+#!/usr/bin/bash
+
+if ! [ -d /run/lirc ]; then
+	mkdir -p -m0755 /run/lirc
+fi
+
+exec 2>&1
+exec /usr/bin/lircd --nodaemon

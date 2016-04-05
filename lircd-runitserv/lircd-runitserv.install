@@ -1,0 +1,17 @@
+pre_install() {
+	if [ -d /etc/sv/lircd ]; then
+		rm -r /etc/sv/lircd
+	fi
+	if [ -d /var/log/lircd ]; then
+		rm -r /var/log/lircd
+	fi
+}
+
+pre_remove() {
+	if [ -L /var/service/lircd ]; then
+		rm /var/service/lircd
+		(sleep 3)
+	fi
+	rm -r /var/log/lircd
+	rm -r /etc/sv/lircd
+}

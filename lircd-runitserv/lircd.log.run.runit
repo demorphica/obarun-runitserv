@@ -1,0 +1,5 @@
+#!/usr/bin/bash
+if ! [ -d /var/log/lircd ]; then
+	mkdir -p -m0755 /var/log/lircd
+fi
+exec chpst -uroot svlogd -tt /var/log/lircd
