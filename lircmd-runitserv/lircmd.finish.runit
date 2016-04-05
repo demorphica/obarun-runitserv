@@ -1,0 +1,5 @@
+#!/usr/bin/bash
+
+if [ -h /var/service/lircd ]; then
+	svopts disable lircd
+fi

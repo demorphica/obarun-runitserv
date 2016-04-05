@@ -1,0 +1,9 @@
+#!/usr/bin/bash
+
+if ! [ -h /var/service/lircd ]; then
+	svopts enable lircd &>/dev/null
+	sleep 3
+fi
+
+exec 2>&1
+exec /usr/bin/lircmd --nodaemon

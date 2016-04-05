@@ -1,0 +1,17 @@
+pre_install() {
+	if [ -d /etc/sv/lircmd ]; then
+		rm -r /etc/sv/lircmd
+	fi
+	if [ -d /var/log/lircmd ]; then
+		rm -r /var/log/lircmd
+	fi
+}
+
+pre_remove() {
+	if [ -L /var/service/lircmd ]; then
+		rm /var/service/lircmd
+		(sleep 3)
+	fi
+	rm -r /var/log/lircmd
+	rm -r /etc/sv/lircmd
+}

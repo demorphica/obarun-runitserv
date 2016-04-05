@@ -1,0 +1,32 @@
+# Maintainer: Eric Vidal <eric@obarun.org>
+
+pkgname=lircmd-runitserv
+pkgver=0.1
+pkgrel=1
+pkgdesc="lircmd service for runit"
+arch=(x86_64)
+license=('beerware')
+depends=('lirc' 'svopts-obarun' 'runit')
+conflicts=()
+install=lircmd-runitserv.install
+source=('lircmd.config.log.runit'
+		'lircmd.log.run.runit'
+		'lircmd.run.runit'
+		'lircmd.finish.runit'
+		'LICENSE'
+		'lircmd-runitserv.install')
+md5sums=('e11a97d1ec5ca86034a2db9eb23f4005'
+         '08a768f3500bacb923cf83d8c93aea6a'
+         '47aaf22b45c07d8695b9a43017a9878d'
+         '4a027a67bc62bddc935a3a12c4fa4de7'
+         '191a37ae657aa17e37e75d0242865dba'
+         '0e0c7332cde36222d35351483cc11357')
+
+
+package() {
+	install -Dm755 "$srcdir/lircmd.run.runit" "$pkgdir/etc/sv/lircmd/run"
+	install -Dm755 "$srcdir/lircmd.finish.runit" "$pkgdir/etc/sv/lircmd/finish"
+    install -Dm755 "$srcdir/lircmd.log.run.runit" "$pkgdir/etc/sv/lircmd/log/run"
+	install -Dm644 "$srcdir/lircmd.config.log.runit" "$pkgdir/var/log/lircmd/config"
+	install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/lircmd-runitserv/LICENSE"
+}
