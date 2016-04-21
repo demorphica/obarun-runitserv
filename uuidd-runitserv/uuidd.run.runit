@@ -1,6 +1,7 @@
 #!/usr/bin/sh
 exec 2>&1
+if ! [ -d /run/uuidd ]; then
+	install -o 68 -g 68 -dm755 /run/uuidd
+fi
 
-[ ! -d /run/uuidd ] && mkdir -p /run/uuidd
-chown uuidd:uuidd /run/uuidd
 exec chpst -u uuidd:uuidd uuidd -d -F -P
