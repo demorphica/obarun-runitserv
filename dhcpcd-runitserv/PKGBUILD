@@ -7,11 +7,11 @@
 
 pkgname=dhcpcd-runitserv
 pkgver=0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="dhcpcd service for runit"
 arch=(x86_64)
 license=('beerware')
-depends=('dhcpcd-nosystemd' 'runit')
+depends=('dhcpcd' 'runit')
 conflicts=()
 install=dhcpcd-runitserv.install
 source=('dhcpcd.config.log.runit'

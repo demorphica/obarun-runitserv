@@ -6,11 +6,11 @@
 # Maintainer: Eric Vidal <eric@obarun.org>
 pkgname=dbus-runitserv
 pkgver=0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="dbus service for runit"
 arch=(x86_64)
 license=('beerware')
-depends=('dbus-nosystemd' 'runit')
+depends=('dbus' 'runit')
 conflicts=()
 install=dbus-runitserv.install
 source=('dbus.config.log.runit'

@@ -7,11 +7,11 @@
 
 pkgname=ip6tables-runitserv
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="iptables service for runit"
 arch=(x86_64)
 license=('beerware')
-depends=('iptables-nosystemd' 'runit')
+depends=('iptables' 'runit')
 conflicts=()
 install=ip6tables-runitserv.install
 source=('ip6tables.config.log.runit'

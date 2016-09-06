@@ -7,11 +7,11 @@
 
 pkgname=dmraid-runitserv
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="dmraid service for runit"
 arch=(x86_64)
 license=('beerware')
-depends=('dmraid-nosystemd' 'runit')
+depends=('dmraid' 'runit')
 conflicts=()
 install=dmraid-runitserv.install
 source=('dmraid.config.log.runit'

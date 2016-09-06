@@ -7,11 +7,11 @@
 
 pkgname=xinetd-runitserv
 pkgver=0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="xinetd service for runit"
 arch=(x86_64)
 license=('beerware')
-depends=('inetutils' 'syslog-ng-nosystemd' 'runit')
+depends=('inetutils' 'syslog-ng' 'runit')
 conflicts=()
 install=xinetd-runitserv.install
 source=('xinetd.config.log.runit'

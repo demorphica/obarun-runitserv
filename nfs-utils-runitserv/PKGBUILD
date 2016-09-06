@@ -7,11 +7,11 @@
 
 pkgname=nfs-utils-runitserv
 pkgver=0.1
-pkgrel=4
+pkgrel=5
 pkgdesc="nfs-utils service for runit"
 arch=(x86_64)
 license=('beerware')
-depends=('nfs-utils-nosystemd' 'rpcbind-runitserv' 'rpc.statd-runitserv' 'runit')
+depends=('nfs-utils' 'rpcbind-runitserv' 'rpc.statd-runitserv' 'runit')
 conflicts=()
 install=nfs-utils-runitserv.install
 source=('nfs-utils.config.log.runit'

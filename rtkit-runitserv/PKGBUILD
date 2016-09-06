@@ -7,11 +7,11 @@
 
 pkgname=rtkit-runitserv
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="rtkit service for runit"
 arch=(x86_64)
 license=('beerware')
-depends=('rtkit-nosystemd' 'runit')
+depends=('rtkit' 'runit')
 conflicts=()
 install=rtkit-runitserv.install
 source=('rtkit.config.log.runit'

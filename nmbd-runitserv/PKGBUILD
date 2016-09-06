@@ -2,11 +2,11 @@
 
 pkgname=nmbd-runitserv
 pkgver=0.1
-pkgrel=1
+pkgrel=3
 pkgdesc="nmbd service for runit"
 arch=(x86_64)
 license=('beerware')
-depends=('samba-nosystemd' 'runit')
+depends=('samba' 'runit')
 conflicts=()
 install=nmbd-runitserv.install
 source=('nmbd.config.log.runit'

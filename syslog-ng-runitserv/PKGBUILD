@@ -7,11 +7,11 @@
 
 pkgname=syslog-ng-runitserv
 pkgver=0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="syslog-ng service for runit"
 arch=(x86_64)
 license=('beerware')
-depends=('syslog-ng-nosystemd' 'runit')
+depends=('syslog-ng' 'runit')
 conflicts=()
 install=syslog-ng-runitserv.install
 source=('syslog-ng.config.log.runit'

@@ -7,11 +7,11 @@
 
 pkgname=cups-runitserv
 pkgver=0.1
-pkgrel=4
+pkgrel=5
 pkgdesc="cups service for runit"
 arch=(x86_64)
 license=('beerware')
-depends=('cups-nosystemd' 'runit')
+depends=('cups' 'runit')
 conflicts=()
 install=cups-runitserv.install
 source=('cups.config.log.runit'

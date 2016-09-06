@@ -8,11 +8,11 @@
 
 pkgname=ntpd-runitserv
 pkgver=0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="ntpd service for runit"
 arch=(x86_64)
 license=('beerware')
-depends=('openntpd-nosystemd' 'runit')
+depends=('openntpd' 'runit')
 conflicts=()
 install=ntpd-runitserv.install
 source=('ntpd.config.log.runit'
