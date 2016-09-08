@@ -6,8 +6,8 @@
 # Maintainer: Eric Vidal <eric@obarun.org>
 
 pkgname=nfs-utils-runitserv
-pkgver=0.1
-pkgrel=5
+pkgver=0.2
+pkgrel=1
 pkgdesc="nfs-utils service for runit"
 arch=(x86_64)
 license=('beerware')
@@ -22,7 +22,7 @@ source=('nfs-utils.config.log.runit'
 		'nfs-utils-runitserv.install')
 md5sums=('e11a97d1ec5ca86034a2db9eb23f4005'
          '01692baf3b320013ca1e7b5bb67602d9'
-         '0d24ae0546fe894326f1b2d6bdd9bc9e'
+         'dba0af66d332701114e63aa2514c6df3'
          '0e024e1801175f15350e60ced7bddac1'
          '191a37ae657aa17e37e75d0242865dba'
          '71d93b9f5fca0a2ee6518fb44e625f21')

@@ -10,24 +10,10 @@ if [[ ! -h /var/service/rpc.statd ]]; then
 	echo "starting statd"
 	sleep 3
 fi
-source /etc/conf.d/nfs-server.conf
-source /etc/conf.d/nfs-common.conf
 
-NFS_UTILS_CONFIG=/run/sysconfig/nfs-utils
+/usr/lib/nfs-utils/nfs-utils_env.sh
 
-[[ -d /run/sysconfig ]] || mkdir /run/sysconfig
-[[ -e  $NFS_UTILS_CONFIG ]] && rm -f $NFS_UTILS_CONFIG
-
-# /etc/conf.d/nfs-common
-echo "STATDARGS=\"$STATD_OPTS\"" >> $NFS_UTILS_CONFIG
-echo "SMNOTIFYARGS=\"$SMNOTIFY_OPTS\"" >> $NFS_UTILS_CONFIG
-echo "RPCIDMAPDARGS=\"$IDMAPD_OPTS\"" >> $NFS_UTILS_CONFIG
-echo "GSSDARGS=\"$GSSD_OPTS\"" >> $NFS_UTILS_CONFIG
-
-# /etc/conf.d/nfs-server
-echo "RPCMOUNTDARGS=\"$MOUNTD_OPTS\"" >> $NFS_UTILS_CONFIG
-echo "RPCNFSDARGS=\"$NFSD_OPTS\"" >> $NFS_UTILS_CONFIG
-echo "SVCGSSDARGS=\"$SVCGSSD_OPTS\"" >> $NFS_UTILS_CONFIG
+source /run/sysconfig/nfs-utils
 
 echo "Loading modules"
 /usr/bin/modprobe sunrpc
