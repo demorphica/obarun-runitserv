@@ -1,5 +1,9 @@
 #!/usr/bin/sh
 exec 2>&1
+
+source /etc/nfs.conf
+source /etc/nfsmount.conf
+
 if [[ ! -h /var/service/rpcbind ]]; then
 	ln -s /etc/sv/rpcbind /var/service/
 	echo "starting rpcbind"
@@ -11,9 +15,6 @@ if [[ ! -h /var/service/rpc.statd ]]; then
 	sleep 3
 fi
 
-/usr/lib/nfs-utils/nfs-utils_env.sh
-
-source /run/sysconfig/nfs-utils
 
 echo "Loading modules"
 /usr/bin/modprobe sunrpc

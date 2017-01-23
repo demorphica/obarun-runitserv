@@ -6,12 +6,12 @@
 # Maintainer: Eric Vidal <eric@obarun.org>
 
 pkgname=nfs-utils-runitserv
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 pkgdesc="nfs-utils service for runit"
 arch=(x86_64)
 license=('beerware')
-depends=('nfs-utils' 'rpcbind-runitserv' 'rpc.statd-runitserv' 'runit')
+depends=('nfs-utils>=2.1.1' 'rpcbind-runitserv' 'rpc.statd-runitserv' 'runit')
 conflicts=()
 install=nfs-utils-runitserv.install
 source=('nfs-utils.config.log.runit'
@@ -22,7 +22,7 @@ source=('nfs-utils.config.log.runit'
 		'nfs-utils-runitserv.install')
 md5sums=('e11a97d1ec5ca86034a2db9eb23f4005'
          '01692baf3b320013ca1e7b5bb67602d9'
-         'dba0af66d332701114e63aa2514c6df3'
+         'd86b6c16ebd4d9f481f2be279ab8d249'
          '0e024e1801175f15350e60ced7bddac1'
          '191a37ae657aa17e37e75d0242865dba'
          '71d93b9f5fca0a2ee6518fb44e625f21')
